@@ -1,0 +1,60 @@
+{
+  "name": "frontend-new",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@designbycode/tailwindcss-text-stroke": "^1.2.1",
+    "@emailjs/browser": "^3.12.1",
+    "@sendgrid/mail": "^8.1.0",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "autoprefixer": "^10.4.16",
+    "axios": "^1.6.5",
+    "browserify-fs": "^1.0.0",
+    "crypto-browserify": "^3.12.0",
+    "emailjs": "^4.0.3",
+    "flowbite-react": "^0.7.2",
+    "history": "^5.3.0",
+    "nodemailer": "^6.9.8",
+    "os-browserify": "^0.3.0",
+    "postcss": "^8.4.33",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-input-emoji": "^5.6.5",
+    "react-player": "^2.14.1",
+    "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^6.21.2",
+    "react-scripts": "5.0.1",
+    "socket.io-client": "^4.7.4",
+    "stream-browserify": "^3.0.0",
+    "tailwindcss": "^3.4.1",
+    "timeago.js": "^4.0.2",
+    "util": "^0.12.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
