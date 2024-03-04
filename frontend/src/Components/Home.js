@@ -23,7 +23,7 @@ const Home = () => {
     return (
     <>
     <Navbar/>
-    <div class="mx-16 my-16 flex flex-row-reverse justify-center">
+    <div class="mx-16 my-32 flex flex-row-reverse justify-center">
       <div class="flex flex-row items-end justify-center text-center text-4xl font-bold tracking-wide">
         Discover the perfect <br />
         book for you
