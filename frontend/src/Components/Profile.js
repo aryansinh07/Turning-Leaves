@@ -41,7 +41,7 @@ const Profile = () => {
   return (
     <div>
         <Navbar/>
-        <div class="profile-container mx-16 flex md:flex-row justify-start md:space-x-10 flex-col ">
+        <div class="profile-container mt-32 mx-16 flex md:flex-row justify-start md:space-x-10 flex-col ">
 
       <div class="image flex flex-col mt-4">
         {userProfile.profilePicture ? (
@@ -58,61 +58,78 @@ const Profile = () => {
             </Link>
           </div>
         )}
-        <h2 class="font-bold mb-4"> About me </h2>
-        <p class="text-sm w-60 text-justify text-gray-500">
+        <h2 class="font-varela text-3xl mb-4"> About me </h2>
+        <p class="text-lg font-medium w-60 text-justify text-gray-800">
           {userProfile.bio}
         </p>
 
       </div>
 
-      <div class="info mt-4">
-        <div class="text-2xl tracking-widest bg-yellow-200 p-2 font-bold rounded-md px-4 
-        w-32 md:block hidden"> HELLO </div>
-        <h2 class="p-2 text-2xl "> I'm <span class="text-2xl font-semibold"> {userProfile.name} </span> </h2>
-        <div>
-          <hr/>
-        </div>
-        <div class="p-2 mb-1">
-           <span class="font-bold "> Location </span>:  Mumbai
-        </div>
-        <div class="p-2 mb-1">
-           <span class="font-bold "> Email </span>  :   {userProfile.email}
-        </div>
-        <div class="p-2 mb-1">
-           <span class="font-bold "> Registered On </span> :  {createdAtDate}
-        </div>
-        <div class="p-2 mb-1">
-           <span class="font-bold "> Mobile no </span> :  9833924584
-        </div>
-        <div class="mb-5
-        ">    
-    <div class="flex items-center my-4">
-    <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-    </svg>
-    <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-    </svg>
-    <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-    </svg>
-    <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-    </svg>
-    <svg class="w-4 h-4 ms-1 text-gray-300 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-    </svg>
-</div>
-          <hr/>
-        </div> 
+      <div class="flex justify-center mt-4">
+  <div class=" overflow-hidden  rounded-lg border border-blue-300 ease-in-out transform hover:scale-105 duration-300  shadow">
+    <div class="px-4 py-5 sm:px-6">
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+            User Profile
+        </h3>
+        <p class="mt-1 max-w-2xl text-sm text-gray-500">
+            This is some information about the user.
+        </p>
+    </div>
+    <div class="border-t border-gray-200 px-4 py-5 sm:p-0 ">
+        <dl class="sm:divide-y sm:divide-gray-200">
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 bg-lime-100 ">
+                <dt class="text-sm font-medium text-gray-500 ">
+                    Full name
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {userProfile.name}
+                </dd>
+            </div>
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 bg-orange-100">
+                <dt class="text-sm font-medium text-gray-500">
+                    Email address
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {userProfile.email}
+                </dd>
+            </div>
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 bg-green-100">
+                <dt class="text-sm font-medium text-gray-500">
+                    Phone number
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    (123) 456-7890
+                </dd>
+            </div>
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 bg-purple-100">
+                <dt class="text-sm font-medium text-gray-500">
+                    Address
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    123 Main St<br/>
+                     Anytown, USA 12345
+                </dd>
+            </div>
 
-        <Link to={"/update-user-profile"}>
-        <button class=" mx-2 p-1.5 px-4 bg-pink-300 rounded-md text-lg font-bold tracking-wide">
-          Edit
-        </button>
-        </Link>
-        
-      </div>
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6  bg-indigo-200">
+                <dt class="text-sm font-medium text-gray-500">
+                    Registered On
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {createdAtDate}
+                </dd>
+            </div>
+          
+
+        </dl>
+    </div>
+    <Link to={"/update-user-profile"}>
+            <button class="ease-in-out transform hover:scale-105 duration-300 mx-3 my-3 p-1.5 px-8 bg-pink-300 rounded-md text-lg font-bold tracking-wide hover:bg-pink-400 ">
+             Edit
+            </button>
+            </Link>
+</div>
+</div>
 
     </div>
 
@@ -121,33 +138,44 @@ const Profile = () => {
     
        
     {userProfile &&  userProfile.listings ? (
-        <div className="flex flex-row mx-16 flex-wrap">
-          {userProfile.listings.map((listing) => (
-             <div class="relative flex flex-col mb-4 md:mx-2">
-             {listing.images && listing.images.length > 0 ? (
-            <img
-        class="m-2 w-60 h-44 rounded-2xl"
-        src={listing.images[0]}
-        alt={listing.title}
-      />
-    ) : (
-      <Link to={`/upload-book-images/${listing._id}`}>
-          <button className="m-2 w-60 h-44 rounded-2xl border-dashed border-2 flex items-center justify-center">
-              Upload Image
-          </button>
-      </Link>
-    )}
-             <h3 class="text-sm font-bold mt-2 ml-2">{listing.title}</h3>
-             <h3 class="text-sm font-bold ml-2 mt-1">${listing.price}</h3>
-             <Link to={`/delete-book/${listing._id}`} >
-             <button className="border-2 w-60 mt-2 rounded-lg p-2 bg-gray-200 ml-2 text-sm font-bold">
-                  View Book
+       
+       <div className="flex flex-row mx-16 flex-wrap">
+       {userProfile.listings.map((listing) => (
+   
+         <div key={listing.id} class="relative mr-5 mb-5 bg-white border border-gray-200 rounded-lg shadow ease-in-out transform hover:scale-105 duration-300">
+        
+        {listing.images && listing.images.length > 0 ? (
+     <div>
+            <img class=" w-72 h-72  " src={listing.images[0]} alt="product image" />
+            
+         </div>
+   ) : (
+
+     <div>
+         <Link to={`/upload-book-images/${listing._id}`}>
+             <button className="w-72 h-72 ">
+                 Upload Image
              </button>
-             
-             </Link>
-             </div>
-))}
+         </Link>
+     </div>
+   )}
+    
+        <div class="px-5 pb-5">
+            
+            <h5 class="text-xl font-semibold tracking-tight text-gray-900 "> {listing.title} </h5>
+    
+            <div class="flex items-center justify-between my-2">
+                <span class="text-3xl font-bold text-gray-900"> {listing.price} </span>
+                <Link to={`/book-details/${listing._id}`} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Buy Now</Link>
+            </div>
         </div>
+    </div>
+    
+       
+       ))}
+       </div>
+
+
       ) : (
         <div>
           <h2  className='text-xl font-semibold mt-6 mb-6'> No Books Posted </h2>
@@ -157,59 +185,45 @@ const Profile = () => {
     <h1 class="mx-16 text-2xl font my-4"> Wishlists </h1>
     <hr class="mx-16"/>
     <div class=""> 
-    {userProfile &&  userProfile.wishlist ? (
-        <div className="flex flex-row mx-16 flex-wrap">
-          {userProfile.wishlist.map((listing) => (
-             <div class="relative flex flex-col mb-4 md:mx-2">
-             <img class="m-2 w-60 h-44 rounded-2xl"
-              src={listing.images[0]}
-              alt={listing.title}
-      />
-             <h3 class="text-sm font-bold mt-2 ml-2">{listing.title}</h3>
-             <h3 class="text-sm font-bold ml-2 mt-1">${listing.price}</h3>
-             <button class="border-2 w-60 mt-2 rounded-lg p-2 bg-gray-200 ml-2 text-sm font-bold">
-                View Book
-             </button>
-
-             </div>
-))}
+    {userProfile &&  userProfile.wishlist ? 
+    (
+      <div className="flex flex-row mx-16 flex-wrap">
+      {userProfile.wishlist.map((listing) => (
+  
+        <div key={listing.id} class="relative mr-5 mb-5 bg-white border border-gray-200 rounded-lg shadow ease-in-out transform hover:scale-105 duration-300">
+       
+       {listing.images && listing.images.length > 0 ? (
+    <div>
+           <img class=" w-72 h-72  " src={listing.images[0]} alt="product image" />
+           
         </div>
+  ) : (
+
+    <div>
+        <h2>No Image</h2>
+    </div>
+  )}
+   
+       <div class="px-5 pb-5">
+           
+           <h5 class="text-xl font-semibold tracking-tight text-gray-900 "> {listing.title} </h5>
+   
+           <div class="flex items-center justify-between my-2">
+               <span class="text-3xl font-bold text-gray-900"> {listing.price} </span>
+               <Link to={`/book-details/${listing._id}`} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Buy Now</Link>
+           </div>
+       </div>
+   </div>
+   
+      
+      ))}
+      </div>
       ) : (
         <div>
           <h2  className='text-xl font-semibold mt-6 mb-6'> No Books Wishlisted </h2>
         </div>
       )}
     </div>
-    <div class="">
-  <div class="mx-16 my-2 text-xl">
-    Reviews
-  </div>
-  <hr class="mx-16"/>
-  {userProfile && userProfile.review ? (
-    <div class="mx-16 flex flex-col max-h-96 overflow-auto">
-    { userProfile.review.map((review)=> (
-        
-        <div class="bg-white my-4 mx-4 rounded-md shadow-md flex flex-col space-y-1 max-w-96">
-        <div class="flex flex-row space-x-4 mx-2">
-          <img class="w-8 h-8 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" src="https://thumbs.dreamstime.com/b/man-2488211.jpg" alt="Bordered avatar"></img>
-          <h2 class="text-lg font-semibold">
-            Aryan Singh 
-          </h2>
-  
-        </div>
-        <hr/>
-        <div>
-         <p class="text-sm mx-2 text-justify "> {review.reviewText}
-         </p>
-        </div>
-      </div>
-
-    ))
-
-    }
-  </div>
-  ) : (<> No Reviews Posted </>)}
-  </div>
         <Footer/>
     </div>
   )

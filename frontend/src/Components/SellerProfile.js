@@ -66,7 +66,7 @@ const SellerProfile = () => {
     return (
         <div>
             <Navbar/>
-            <div class="profile-container mx-16 flex md:flex-row md:justify-start md:space-x-10 flex-col">
+            <div class="profile-container mx-16 flex md:flex-row md:justify-start md:space-x-10 flex-col mt-32">
     
           <div class="image flex flex-col mt-4">
             <img src={sellerProfile.profilePicture} class="h-60 w-60 rounded-md mb-4"/>
@@ -120,32 +120,89 @@ const SellerProfile = () => {
         
            
         {sellerProfile && sellerProfile.listings ? (
-            <div className="flex flex-row justify-between mx-16 flex-wrap">
-              {sellerProfile.listings.map((listing) => (
-                 <div class="relative flex flex-col mb-4">
+            <div className="flex flex-row mx-16 flex-wrap">
+            {sellerProfile.listings.map((listing) => (
+        
+        <div key={listing.id} class="relative mr-5 mb-5 bg-white border border-gray-200 rounded-lg shadow">
+             
+             {listing.images && listing.images.length > 0 ? (
+          <div>
+                 <img class=" w-72 h-72  " src={listing.images[0]} alt="product image" />
                  
-                <img
-            class="m-2 w-60 h-44 rounded-2xl"
-            src={listing.images[0]}
-            alt={listing.title}
-          />
-       
-                 <h3 class="text-sm font-bold mt-2 ml-2">{listing.title}</h3>
-                 <h3 class="text-sm font-bold ml-2 mt-1">${listing.price}</h3>
-
-                 <Link to={`/book-details/${listing._id}`} >
-                    <button className="border-2 w-60 mt-2 rounded-lg p-2 bg-gray-200 ml-2 text-sm font-bold">
-                        Buy now
-                    </button>
-                 </Link>
+              </div>
+        ) : (
+      
+          <div>
+              <h2>No Image</h2>
+          </div>
+        )}
+         
+             <div class="px-5 pb-5">
+                 
+                 <h5 class="text-xl font-semibold tracking-tight text-gray-900 "> {listing.title} </h5>
+         
+                 <div class="flex items-center justify-between my-2">
+                     <span class="text-3xl font-bold text-gray-900"> {listing.price} </span>
+                     <Link to={`/book-details/${listing._id}`} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Buy Now</Link>
                  </div>
-    ))}
+             </div>
+         </div>
+         
+            
+            ))}
             </div>
           ) : (
             <div>
               <h2  className='text-xl font-semibold mt-6 mb-6'> No Books Posted </h2>
             </div>
           )}
+  <section class="">
+  <div class="max-w-4xl mx-10 px-4">
+    <h2 class="text-3xl font-normal text-gray-800 mb-6 ">Reviews</h2>
+    <div class="space-y-6">
+      
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="flex items-center mb-4">
+          <img class="w-12 h-12 rounded-full mr-4" src="https://img.freepik.com/free-photo/smiling-young-male-professional-standing-with-arms-crossed-while-making-eye-contact-against-isolated-background_662251-838.jpg?w=740&t=st=1709828290~exp=1709828890~hmac=6d84a4d2dab474d4ec56617d72ea8af34dc2df1729fb384562416f765fe52eee" alt="Reviewer Image"/>
+          <div>
+            <p class="text-gray-800 font-bold">Akshay Rawat</p>
+            <p class="text-gray-500 text-sm">2 days ago</p>
+          </div>
+        </div>
+        <div class="flex items-center mb-4">
+          <div class="flex items-center mr-2">
+            <svg class="text-yellow-400 h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+            </svg>
+          </div>
+          <span class="text-gray-600 font-bold">4/5</span>
+        </div>
+        <p class="text-gray-700 text-sm">I stumbled upon this book seller by chance, and I'm so glad I did! The wide selection of titles, both new and used, is truly impressive. I've found some rare gems that were difficult to find elsewhere. The books arrived promptly and in pristine condition. I highly recommend this seller to any book lover seeking a fantastic reading experience!</p>
+      </div>
+      
+
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="flex items-center mb-4">
+          <img class="w-12 h-12 rounded-full mr-4" src="https://img.freepik.com/free-photo/smiling-confident-businesswoman-posing-with-arms-folded_1262-20950.jpg?t=st=1709828596~exp=1709832196~hmac=963a5cdcebf5cfa4a4a77215d3cd861eb33a937f909f331bbb237a6a237584a9&w=826" alt="Reviewer Image"/>
+          <div>
+            <p class="text-gray-800 font-bold">Akansha Tripathi</p>
+            <p class="text-gray-500 text-sm">2 days ago</p>
+          </div>
+        </div>
+        <div class="flex items-center mb-4">
+          <div class="flex items-center mr-2">
+            <svg class="text-yellow-400 h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+            </svg>
+          </div>
+          <span class="text-gray-600 font-bold">4/5</span>
+        </div>
+        <p class="text-gray-700 text-sm">As an avid reader, I've purchased books from numerous sellers, but this one stands out for their exceptional service. The seller's attention to detail and care in packaging is remarkable. The books arrive as if they were just printed, even when purchasing used copies. The prices are also very reasonable, making it easy to indulge in my book-buying habit. I can't recommend this seller enough!</p>
+      </div>
+
+    </div>
+  </div>
+</section>
             <Footer/>
         </div>
       )

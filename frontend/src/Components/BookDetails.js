@@ -35,7 +35,7 @@ const BookDetails = () => {
       <div>
         {book ? (
           <>
-            <div className="book-container mt-4 ml-16 mr-4 mb-16 flex md:flex-row md:justify-start md:space-x-8 flex-col">
+            <div className="book-container md:mt-32 ml-16 mr-4 mb-16 flex md:flex-row md:justify-start md:space-x-8 flex-col">
               <Carousel showArrows={true} showThumbs={false} className="md:w-1/2 w-[70%]">
                 {book.images &&
                   book.images.map((image, index) => (
@@ -88,25 +88,44 @@ const BookDetails = () => {
       </div>
       <h1 class="mx-16 text-2xl font my-4"> More Books by the User </h1>
       <hr class="mx-16" />
-      <div class="flex flex-row mx-16 flex-wrap">
-        {userBooks &&
-          userBooks.map((userBook, index) => (
-            <div class="flex flex-col mb-4 md:mx-2" key={index}>
-              <img
-                class="m-2 w-60 h-44 rounded-2xl"
-                src={userBook.images[0]}
-                alt={`User Book ${index + 1}`}
-              />
-              <h3 class="text-sm font-bold mt-2 ml-2">{userBook.title}</h3>
-              <h3 class="text-sm font-bold ml-2 mt-1">${userBook.price}</h3>
-              <Link to={`/book-details/${userBook._id}`} >
-              <button className="border-2 w-60 mt-2 rounded-lg p-2 bg-gray-200 ml-2 text-sm font-bold">
-                  Buy Now
-              </button>
-              </Link>
-            </div>
-          ))}
+      { userBooks ? 
+    (
+      <div className="flex flex-row mx-16 flex-wrap">
+      {userBooks.map((listing) => (
+  
+        <div key={listing.id} class="relative mr-5 mb-5 bg-white border border-gray-200 rounded-lg shadow">
+       
+       {listing.images && listing.images.length > 0 ? (
+    <div>
+           <img class=" w-72 h-72  " src={listing.images[0]} alt="product image" />
+           
+        </div>
+  ) : (
+
+    <div>
+        <h2>No Image</h2>
+    </div>
+  )}
+   
+       <div class="px-5 pb-5">
+           
+           <h5 class="text-xl font-semibold tracking-tight text-gray-900 "> {listing.title} </h5>
+   
+           <div class="flex items-center justify-between my-2">
+               <span class="text-3xl font-bold text-gray-900"> {listing.price} </span>
+               <Link to={`/book-details/${listing._id}`} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Buy Now</Link>
+           </div>
+       </div>
+   </div>
+   
+      
+      ))}
       </div>
+      ) : (
+        <div>
+          <h2  className='text-xl font-semibold mt-6 mb-6'> No More Books Posted By User </h2>
+        </div>
+      )}
       <Footer />
     </div>
   );
