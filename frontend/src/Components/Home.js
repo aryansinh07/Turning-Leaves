@@ -2,7 +2,7 @@ import React, { useState , useContext, useEffect } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import { bookContext } from './context/bookContext/bookContext' 
-import "../assets/typing.css" ;
+
 const Home = () => {
 
   const { searchBookAction } = useContext(bookContext); 
