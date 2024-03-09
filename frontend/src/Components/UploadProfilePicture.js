@@ -42,34 +42,29 @@ const UploadProfilePicture = () => {
   return (
     <div>
       <Navbar />
-      <hr className="mx-16" />
-      <div className="m-16 flex flex-row justify-around">
-        <div className="rounded-lg border-2 shadow-lg">
-          <h1 className="m-3 text-center text-xl font-thin">Upload Profile Picture</h1>
-          <hr />
-          <form encType="multipart/form-data" className="flex flex-col" onSubmit={onSubmitImageHandler}>
-            <label
-              htmlFor="profilePicture"
-              className="mt-3 ml-3 font-mono text-gray-500 uppercase"
-            >
-              Select Image
-            </label>
-            <input
-              type="file"
-              name="profilePicture"
-              onChange={onChangeImageInput}
-              className="m-3 rounded-md border-2 bg-gray-50 py-2 pl-2 pr-20 font-mono"
-            />
-            <button
-              type="submit"
-              className="m-3 rounded-md border-2 bg-black p-2 px-10 text-sm font-medium text-white hover:bg-gray-900"
-              disabled={loading} // Disable the button while loading
-            >
-              {loading ? 'Uploading...' : 'Upload'}
-            </button>
-          </form>
-        </div>
+      <section class=" my-32">
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+          <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+              <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                  Upload Profile Picture
+              </h1>
+              <form  enctype="multipart/form-data" class="space-y-4 md:space-y-6" onSubmit={onSubmitImageHandler}>
+                  <div>
+                      <label for="profilePicture" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Profile Picture</label>
+                      <input  onChange={onChangeImageInput}  type="file"   name="profilePicture"  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select Profile Picture" />
+                  </div>
+                  
+                  <button disabled={loading} type="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                  {loading ? 'Uploading...' : 'Upload'}
+                  </button>
+                  
+              </form>
+          </div>
       </div>
+  </div>
+</section>
+
       <Footer />
     </div>
   );

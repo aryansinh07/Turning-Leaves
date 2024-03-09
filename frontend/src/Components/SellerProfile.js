@@ -66,64 +66,110 @@ const SellerProfile = () => {
     return (
         <div>
             <Navbar/>
-            <div class="profile-container mx-16 flex md:flex-row md:justify-start md:space-x-10 flex-col mt-32">
-    
-          <div class="image flex flex-col mt-4">
-            <img src={sellerProfile.profilePicture} class="h-60 w-60 rounded-md mb-4"/>
-            <h2 class="font-bold mb-4"> About me </h2>
-            <p class="text-sm w-60 text-justify text-gray-500">
-              {sellerProfile.bio}
-            </p>
-    
-          </div>
-    
-          <div class="info mt-4">
-            <div class="text-2xl tracking-widest bg-yellow-200 p-2 font-bold rounded-md px-4 w-32 hidden md:block"> HELLO </div>
-            <h2 class="p-2 text-2xl "> I'm <span class="text-2xl font-semibold"> {sellerProfile.name} </span> </h2>
-            <div>
-              <hr/>
+        <div className="max-w-5xl mx-auto bg-white shadow-md rounded-lg p-6">
+        <div className="relative">
+          <div
+            className="h-64 bg-cover bg-center rounded-t-lg"
+            style={{ backgroundImage: 'url("https://img.freepik.com/free-photo/html-system-website-concept_23-2150376770.jpg?t=st=1709960871~exp=1709964471~hmac=dbbad2408a680bf150d3a99475bcbced56fcf75fa491e50fef9253c7619ce610&w=996")' }}
+          ></div>
+          
+          <img
+            src={sellerProfile.profilePicture || 'profile-picture.jpg'}
+            alt="Profile Picture"
+            className="w-32 h-32 rounded-full absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 border-4 border-white"
+          />
+          
+          
+        </div>
+        <div className="mt-16 text-center">
+          <h2 className="text-2xl font-bold">{sellerProfile.name}</h2>
+          <p className="text-gray-600">{sellerProfile.bio}</p>
+        </div>
+
+        
+        <div class="mt-8 overflow-hidden  rounded-lg border border-blue-300   shadow">
+    <div class="px-4 py-5 sm:px-6">
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+            User Profile
+        </h3>
+        <p class="mt-1 max-w-2xl text-sm text-gray-500">
+            This is some information about the user.
+        </p>
+    </div>
+    <div class="border-t border-gray-200 px-4 py-5 sm:p-0 ">
+        <dl class="sm:divide-y sm:divide-gray-200">
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 bg-lime-100 ">
+                <dt class="text-sm font-medium text-gray-500 ">
+                    Full name
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {sellerProfile.name}
+                </dd>
             </div>
-            <div class="p-2 mb-1">
-               <span class="font-bold "> Location </span>:  Mumbai
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 bg-orange-100">
+                <dt class="text-sm font-medium text-gray-500">
+                    Email address
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {sellerProfile.email}
+                </dd>
             </div>
-            <div class="p-2 mb-1">
-               <span class="font-bold "> Email </span>  :   {sellerProfile.email}
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 bg-green-100">
+                <dt class="text-sm font-medium text-gray-500">
+                    Phone number
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    (123) 456-7890
+                </dd>
             </div>
-            <div class="p-2 mb-1">
-               <span class="font-bold "> Registered On </span> :  {createdAtDate}
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 bg-purple-100">
+                <dt class="text-sm font-medium text-gray-500">
+                    Address
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    123 Main St<br/>
+                     Anytown, USA 12345
+                </dd>
             </div>
-            <div class="p-2 mb-1">
-               <span class="font-bold "> Mobile no </span> :  8779408499
+
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6  bg-indigo-200">
+                <dt class="text-sm font-medium text-gray-500">
+                    Registered On
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {createdAtDate}
+                </dd>
             </div>
-            <div class="mb-5
-            ">
-              <hr/>
-            </div> 
-            <button class=" mx-2 p-1.5 px-4 bg-pink-300 rounded-md text-lg font-bold tracking-wide">
+
+            
+          
+
+        </dl>
+        
+    </div>
+    </div>
+    <button class=" mt-2 p-1.5 px-8 mr-3  bg-pink-300 rounded-md text-lg font-bold tracking-wide">
               <Link to='/chat' onClick={()=> createChat(user , sellerProfile._id)} >
                    Chat
               </Link>
             </button>
             <Link to={`/rate/${sellerProfile._id}`}>
-            <button class=" mx-2 p-1.5 px-4 bg-orange-300 rounded-md text-lg font-bold tracking-wide">
+            <button class=" mt-2 p-1.5 px-8 bg-orange-300 rounded-md text-lg font-bold tracking-wide">
               Rate me
             </button>
             </Link>
-            
+        
+      </div>
     
-          </div>
-    
-        </div>
-    
-        <h1 class="mx-16 text-2xl font my-4"> Latest Books </h1>
-        <hr class="mx-16"/>
+        <h1 class="mx-auto text-3xl font-varela my-8 text-center "> Latest Books </h1>
+        
         
            
         {sellerProfile && sellerProfile.listings ? (
-            <div className="flex flex-row mx-16 flex-wrap">
+            <div className=" max-w-5xl flex flex-row mx-auto flex-wrap px-4 ">
             {sellerProfile.listings.map((listing) => (
         
-        <div key={listing.id} class="relative mr-5 mb-5 bg-white border border-gray-200 rounded-lg shadow">
+        <div key={listing.id} class="relative mx-4 mb-5 bg-white border border-gray-200 rounded-lg shadow ease-in-out transform hover:scale-105 duration-300">
              
              {listing.images && listing.images.length > 0 ? (
           <div>
@@ -157,8 +203,8 @@ const SellerProfile = () => {
             </div>
           )}
   <section class="">
-  <div class="max-w-4xl mx-10 px-4">
-    <h2 class="text-3xl font-normal text-gray-800 mb-6 ">Reviews</h2>
+  <div class="max-w-5xl mx-auto px-4">
+  <h1 class="mx-auto text-3xl font-varela my-8 text-center tracking-wide "> Reviews </h1>
     <div class="space-y-6">
       
       <div class="bg-white p-6 rounded-lg shadow-md">

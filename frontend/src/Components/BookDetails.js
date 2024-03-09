@@ -35,7 +35,7 @@ const BookDetails = () => {
       <div>
         {book ? (
           <>
-            <div className="book-container md:mt-32 ml-16 mr-4 mb-16 flex md:flex-row md:justify-start md:space-x-8 flex-col">
+            <div className="book-container md:mt-32 ml-16 mr-4 mb-16 flex md:flex-row md:justify-start md:space-x-10 flex-col md:mx-auto max-w-5xl">
               <Carousel showArrows={true} showThumbs={false} className="md:w-1/2 w-[70%]">
                 {book.images &&
                   book.images.map((image, index) => (
@@ -86,14 +86,13 @@ const BookDetails = () => {
             </div>
         )}
       </div>
-      <h1 class="mx-16 text-2xl font my-4"> More Books by the User </h1>
-      <hr class="mx-16" />
+      <h1 class="mx-auto text-3xl text-center my-8 font-varela"> More Books by the User </h1>
       { userBooks ? 
     (
-      <div className="flex flex-row mx-16 flex-wrap">
+      <div className="flex flex-row mx-16 flex-wrap md:max-w-5xl md:mx-auto ">
       {userBooks.map((listing) => (
   
-        <div key={listing.id} class="relative mr-5 mb-5 bg-white border border-gray-200 rounded-lg shadow">
+        <div key={listing.id} class="relative mx-4 mb-5 bg-white border border-gray-200 rounded-lg shadow ease-in-out transform hover:scale-105 duration-300">
        
        {listing.images && listing.images.length > 0 ? (
     <div>

@@ -81,7 +81,7 @@ const Chat = () => {
   return (
     <div>
       <Navbar />
-      <div className="flex md:flex-row flex-col">
+      <div className="flex md:flex-row flex-col mt-32">
         <div className="mr-4 md:w-[20%] w-[80%] flex-grow bg-white p-4 md:ml-16 ml-10">
           {/* Title */}
           <h1 className="mb-4 text-2xl font-semibold">Chats</h1>
