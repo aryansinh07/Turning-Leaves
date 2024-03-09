@@ -12,12 +12,12 @@ const SellBook = () => {
     title:"",
     author:"",
     price:Number, 
-    tags:"",
+    category:"",
     condition:"",
     description:"",
   });
 
-  const { title , author, price , tags, condition, description } = formData;
+  const { title , author, price , category, condition, description } = formData;
   const [loading , setLoading] = useState(false); 
 
   const onChangeInput = e => {
@@ -80,8 +80,30 @@ const SellBook = () => {
                       <input onChange={onChangeInput} type="number" value={price} name="price"  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required=""/>
                   </div>
                   <div>
-                      <label for="tags" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tags</label>
-                      <input onChange={onChangeInput} type="text" value={tags} name="tags"  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required=""/>
+                      <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                      <select  value={category} onChange={onChangeInput} name="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+                       <option>Fiction</option>
+                       <option>Science Fiction</option>
+                       <option>Thriller</option>
+                       <option>Fantancy</option>
+                       <option>Historical Fiction</option>
+                       <option>Romance</option>
+                       <option>Horror</option>
+                       <option>Adventure</option>
+                       <option>Graphical Novel</option>
+                       <option>Mystery</option>
+                       <option>Young Adult</option>
+                       <option>LGBTQ</option>
+                       <option>Religion</option>
+                       <option>History</option>
+                       <option>Geography</option>
+                       <option>Science</option>
+                       <option>Engineering</option>
+                       <option>Engineering Entrance</option>
+                       <option>Medical Entrance</option>
+                       <option>School</option>
+                       </select>
                   </div>
                   <label for="condition" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select the Condition</label>
                   <select  value={condition} onChange={onChangeInput} name="condition" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">

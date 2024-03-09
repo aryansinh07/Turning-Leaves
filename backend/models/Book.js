@@ -25,8 +25,9 @@ const bookSchema = new mongoose.Schema({
         type:String, 
         default: null 
     }],
-    tags:{
+    category:{
         type: String,
+        enum:['Fiction','Science Fiction','Thriller','Fantancy','Historical Fiction','Romance','Horror','Adventure','Graphical Novel','Mystery','Young Adult','LGBTQ','Religion','History','Geography','Science','Engineering','Engineering Entrance', 'Medical Entrance','School']
     },
     seller:{
                 type:mongoose.Schema.Types.ObjectId, 

@@ -3,7 +3,7 @@ const User = require("../models/User");
 const { appErr } = require("../utilis/appErr");
 
 const postBookCtrl = async (req,res,next) =>{
-    const {title , author , description , condition , price , tags} = req.body  ; 
+    const {title , author , description , condition , price , category} = req.body  ; 
     try {
         
         const bookposted = await Book.create({
@@ -12,7 +12,7 @@ const postBookCtrl = async (req,res,next) =>{
             description , 
             condition , 
             price, 
-            tags, 
+            category, 
             seller:req.user
         }); 
         const userFound = await User.findById(req.user); 
