@@ -15,6 +15,8 @@ import OTPverify from "./Components/context/otpverify";
 import SearchedBooks from "./Components/SearchedBooks";
 import Chat from "./Components/Chat/Chat";
 import RateUser from "./Components/RateUser";
+import EditBooks from "./Components/EditBooks";
+
 
 
 function App() {
@@ -39,7 +41,7 @@ function App() {
       <Route path="/search-books"  element={<SearchedBooks/>}/> 
       <Route path="/chat" element={<Chat/>}/>
       <Route path="/rate/:id" element={<RateUser/>}/>
-
+      <Route path="/edit-book/:id" element={<EditBooks/>}/>
      </Routes>
      </BrowserRouter>
     </div>

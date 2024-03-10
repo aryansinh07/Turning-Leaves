@@ -169,6 +169,19 @@ const searchBooksCtrl = async(req,res, next) => {
   }
 }
 
+const fetchBookByCategory = async (req, res, next) => {
+  try {
+    const category = req.params.category; 
+    const bookFound = await Book.find({ category: { $in: [category] } });
+    return res.json({ status: "success", bookFound });
+  } catch (error) {
+    return next(appErr(error.message, 404));
+  }
+};
+
+
+
+
 module.exports = {
     postBookCtrl , 
     fetchAllBookCtrl, 
@@ -178,4 +191,5 @@ module.exports = {
     addBookWishlist,
     bookImageUpload,
     searchBooksCtrl,
+    fetchBookByCategory,
 }; 

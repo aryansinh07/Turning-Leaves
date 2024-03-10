@@ -1,5 +1,5 @@
 import React, { useContext , useEffect } from 'react'
-import {  useParams } from 'react-router-dom';
+import {  Link, useParams } from 'react-router-dom';
 import { bookContext } from './context/bookContext/bookContext';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -50,7 +50,7 @@ const DeleteBook = () => {
       <div>
         {book ? (
           <>
-            <div className="book-container mt-4 ml-16 mr-4 mb-16 flex md:flex-row md:justify-start md:space-x-8 flex-col">
+            <div className="book-container max-w-5xl mt-32 mx-auto  mb-16 flex md:flex-row md:justify-start md:space-x-8 flex-col">
               <Carousel showArrows={true} showThumbs={false} className="md:w-1/2 w-[70%]">
                 {book.images &&
                   book.images.map((image, index) => (
@@ -82,6 +82,13 @@ const DeleteBook = () => {
                 <button class="bg-red-500 w-32 py-1.5 rounded-lg font-semibold" onClick={handleDelete}>
                   Delete
                 </button>
+                <Link to={`/edit-book/${book.id}`}>
+                <button class="bg-green-500 w-32 py-1.5 rounded-lg font-semibold hover:bg-green-400 ease-in-out transform hover:scale-105 duration-150" >
+                  Edit
+                </button>
+
+                </Link>
+                
 
                 
                 
