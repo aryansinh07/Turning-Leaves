@@ -16,6 +16,10 @@ import SearchedBooks from "./Components/SearchedBooks";
 import Chat from "./Components/Chat/Chat";
 import RateUser from "./Components/RateUser";
 import EditBooks from "./Components/EditBooks";
+import EmailSuccess from "./Components/EmailSuccess";
+import PrivacyPolicy from "./Components/PrivacyPolicy";
+import FAQ from "./Components/FAQ";
+import FAQPAGE from "./Components/FAQPAGE";
 
 
 
@@ -42,6 +46,9 @@ function App() {
       <Route path="/chat" element={<Chat/>}/>
       <Route path="/rate/:id" element={<RateUser/>}/>
       <Route path="/edit-book/:id" element={<EditBooks/>}/>
+      <Route path="/email-verified-success" element={<EmailSuccess/>}/>
+      <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
+      <Route path="/faq" element={<FAQPAGE/>}/>
      </Routes>
      </BrowserRouter>
     </div>

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 
 const Login = () => {
-  const { loginUserAction } = useContext(authContext); 
+  const { loginUserAction , error } = useContext(authContext); 
 
   const [formData, setFormData] = useState({
     email: "",
@@ -31,40 +31,23 @@ const Login = () => {
       loginUserAction(formData)
         .then(() => setLoading(false))
         .catch((error) => {
-          console.error("Login failed:", error);
           setLoading(false);
         });
-    }, 1000); // Adjust the delay time as needed
+    }, 500); // Adjust the delay time as needed
   };
 
 
   return (
     <div>
         <Navbar/>
-        {/*<div class="m-16 my-32 flex flex-row justify-around">
-      <div class="rounded-lg border-2 shadow-lg">
-        <h1 class="m-3 text-center text-xl font-thin ">Log in</h1>
-        <form class="flex flex-col" onSubmit={onSubmitHandler}>
-          <input  onChange={onChangeInput}  type="text" name="email" value={email} class="m-3 rounded-md border-2 bg-gray-50 py-2 pl-2 pr-20 font-mono" placeholder="Email" />
-          <input  onChange={onChangeInput} type="text" name="password" value={password} class="m-3 rounded-md border-2 bg-gray-50 py-2 pl-2 pr-20 font-mono" placeholder="Password" />
-          
-          <button class="m-3 rounded-md border-2 bg-black p-2 px-10 text-sm font-medium text-white hover:bg-gray-900 " type="submit" >
-             {loading? (<>
-              <div class="flex justify-center items-center">
-  <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-white"></div>
-  </div>
-             </>) : 'Login'} 
-          </button>
-        </form>
-      </div>
-             </div>*/}
-        <section class="bg-white dark:bg-gray-900">
+        <section class="bg-white dark:bg-gray-900 mt-32 md:mt-0">
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Sign in to your account
               </h1>
+              <h2 className='text-red-500 leading-tight font-bold tracking-tight ' > {error}</h2>
               <form class="space-y-4 md:space-y-6" onSubmit={onSubmitHandler} >
                   <div>
                       <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>

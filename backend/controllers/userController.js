@@ -15,7 +15,10 @@ const userRegisterCtrl = async (req,res,next) => {
         const emailExist = await User.findOne({email}); 
         if(emailExist)
         {
-            next(appErr("User Already Exsit",404)); 
+            return res.json({
+                status: "failed",
+                message: "User Already Exist"
+            })
         }
         const salt = await bcryptjs.genSalt(10); 
         const passwordHashed = await bcryptjs.hash(password,salt); 
@@ -35,32 +38,65 @@ const userRegisterCtrl = async (req,res,next) => {
     }
 }
 
-const userLoginCtrl = async (req,res,next)=>{
-    const {email , password } = req.body ; 
-    try {
-        if(!email || !password)
-        {
-            return next(appErr("All fields are mandatory",404)) ; 
-        }
-        const userFound = await User.findOne({email}).populate('listings').populate('wishlist').populate('review'); 
-        if(!userFound)
-        {
-            return next(appErr("Invalid Login Credentials",404)) ; 
-        }
-        const salt = await bcryptjs.genSalt(10); 
-        const hashedPassword = await bcryptjs.hash(password,salt); 
-        if(!(await bcryptjs.compare(password,hashedPassword)))
-        {
-            return next(appErr("Invalid Login Credentials",404)) ; 
-        }
-        return res.json({status:"success",
-                         userFound,
-                         token: generateToken(userFound._id),  
-                        }); 
-    } catch (error) {
-        return next(appErr(error.message,404)); 
+const userExistCtrl = async(req,res,next) => {
+  const email = req.params.email ; 
+  try {
+    const emailExist = await User.findOne({email}); 
+    if(emailExist)
+    {
+      return res.json({
+        'exist':true
+      }); 
     }
+    else
+    {
+      return res.json({
+        'exist':false
+      }); 
+    }
+  } catch (error) {
+      return next(appErr(error.message)); 
+  }
 }
+
+const userLoginCtrl = async (req, res, next) => {
+    const { email, password } = req.body;
+  
+    try {
+      if (!email || !password) {
+        return next(appErr("All fields are mandatory", 404));
+      }
+  
+      const userFound = await User.findOne({ email }).populate('listings').populate('wishlist').populate('review');
+  
+      if (!userFound) {
+        return res.json({
+            status: "failed",
+            message: "Invalid Login credentials"
+        })
+        
+      }
+  
+      // Compare the plain-text password with the stored hashed password
+      const isPasswordValid = await bcryptjs.compare(password, userFound.password);
+  
+      if (!isPasswordValid) {
+        return res.json({
+            status: "failed",
+            message: "Invalid Login credentials"
+        })
+        
+      }
+  
+      return res.json({
+        status: "success",
+        userFound,
+        token: generateToken(userFound._id),
+      });
+    } catch (error) {
+      return next(appErr(error.message, 404));
+    }
+  };
 
 const userProfileCtrl = async (req,res,next) => {
     try {
@@ -171,5 +207,6 @@ module.exports = {
     profilePhotoCtrl, 
     fetchUserBooksCtrl,   
     userProfileUpdateCtrl,
+    userExistCtrl,
 }; 
 

@@ -35,7 +35,7 @@ const BookDetails = () => {
       <div>
         {book ? (
           <>
-            <div className="book-container md:mt-32 ml-16 mr-4 mb-16 flex md:flex-row md:justify-start md:space-x-10 flex-col md:mx-auto max-w-5xl">
+            <div className="book-container mt-32 ml-16 mr-4 mb-16 flex md:flex-row md:justify-start md:space-x-10 flex-col md:mx-auto max-w-5xl">
               <Carousel showArrows={true} showThumbs={false} className="md:w-1/2 w-[70%]">
                 {book.images &&
                   book.images.map((image, index) => (
@@ -122,7 +122,7 @@ const BookDetails = () => {
       </div>
       ) : (
         <div>
-          <h2  className='text-xl font-semibold mt-6 mb-6'> No More Books Posted By User </h2>
+          <h2  className='text-xl font-semibold mt-6 mb-6 text-center'> No More Books Posted By User </h2>
         </div>
       )}
       <Footer />

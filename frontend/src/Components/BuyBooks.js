@@ -25,13 +25,21 @@ const BuyBooks = () => {
           "Content-Type": "application/json",
         },
       };
-      setSearchByCategory(true); 
-      setSelectedCategory(selected_category); 
-      const categoryBooks = await axios.get(`${API_URL_BOOK}/category/${selected_category}`, config); 
-      console.log(categoryBooks); 
-      if(categoryBooks) {
-        setCategoryBooks(categoryBooks.data.bookFound); 
+      if(selected_category === 'All Books')
+      {
+        setSearchByCategory(false);
       }
+      else
+      {
+        setSearchByCategory(true); 
+        setSelectedCategory(selected_category); 
+        const categoryBooks = await axios.get(`${API_URL_BOOK}/category/${selected_category}`, config); 
+        console.log(categoryBooks); 
+        if(categoryBooks) {
+           setCategoryBooks(categoryBooks.data.bookFound); 
+        }
+      }
+      
     } catch (error) {
       console.log(error); 
     }
@@ -124,7 +132,7 @@ const BuyBooks = () => {
    </div>
    <div onClick={()=>booksByCategory('Engineering')} class="bg-gray-100 rounded-lg p-4 shadow-md transition duration-300 hover:bg-indigo-500 hover:text-white">
      <h3 class="text-xl font-varela mb-2">Engineering</h3>
-   </div>
+   </div> 
    <div onClick={()=>booksByCategory('Engineering Entrance')} class="bg-gray-100 rounded-lg p-4 shadow-md transition duration-300 hover:bg-indigo-500 hover:text-white">
      <h3 class="text-xl font-varela mb-2">Engineering Entrance</h3>
    </div>
@@ -133,6 +141,9 @@ const BuyBooks = () => {
    </div>
    <div onClick={()=>booksByCategory('School')} class="bg-gray-100 rounded-lg p-4 shadow-md transition duration-300 hover:bg-indigo-500 hover:text-white">
      <h3 class="text-xl font-varela mb-2">School</h3>
+   </div>
+   <div onClick={()=>booksByCategory('All Books')} class="bg-gray-100 rounded-lg p-4 shadow-md transition duration-300 hover:bg-indigo-500 hover:text-white">
+     <h3 class="text-xl font-varela mb-2">All Books</h3>
    </div>
  </div>
  <hr className='max-w-5xl mx-auto my-6' />
@@ -148,7 +159,7 @@ const BuyBooks = () => {
       
       <div
         key={listing.id}
-        className="relative mb-5 bg-white border border-gray-200 rounded-lg shadow mx-4 ease-in-out transform hover:scale-105 duration-300"
+        className="relative mb-5 bg-white border border-gray-200 rounded-lg shadow md:mx-4 ease-in-out transform hover:scale-105 duration-300"
       >
         {listing.images && listing.images.length > 0 ? (
           <div>
@@ -157,7 +168,7 @@ const BuyBooks = () => {
               src={listing.images[0]}
               alt="product image"
             />
-            <button onClick={() => addWishlist(listing._id, listing.title)}>
+            <button onClick={() => addWishlist(listing._id, listing.title)} className='hover:text-red-500'>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -216,7 +227,8 @@ const BuyBooks = () => {
   </div>
 )}
 
- </>):(<></>)}
+ </>):(<>
+ </>)}
 </section>
 {!searchByCategory ? (<>
 <h1 className="mx-auto  my-8 text-3xl font-varela text-center">
@@ -237,7 +249,7 @@ const BuyBooks = () => {
               src={listing.images[0]}
               alt="product image"
             />
-            <button onClick={() => addWishlist(listing._id, listing.title)}>
+            <button onClick={() => addWishlist(listing._id, listing.title)} className='hover:text-red-500'>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -290,8 +302,8 @@ const BuyBooks = () => {
     ))}
   </div>
 ) : (
-  <div>
-    <h2 className="text-xl font-semibold mt-6 mb-6">No Books Posted</h2>
+  <div className="flex justify-center items-center h-screen">
+     <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900"></div>
   </div>
 )} </>):(<> </>)}  
         <Footer/>

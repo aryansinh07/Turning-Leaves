@@ -85,7 +85,7 @@ useEffect(()=> {
     <div class="container mx-10 my-2 md:w-[75%] w-[80%] pr-4">
     <div class="mb-4 flex items-center justify-between">
       <div class="flex items-center">
-        <img src={otherUser.profilePicture} alt="User Profile" class="mr-4 h-10 w-10 rounded-full" />
+        <img src={otherUser.profilePicture ? otherUser.profilePicture : 'https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?size=626&ext=jpg&ga=GA1.1.104308764.1701955462&semt=ais'} alt="User Profile" class="mr-4 h-10 w-10 rounded-full" />
         <h1 class="text-2xl font-semibold">{otherUser.name}</h1>
       </div>
     </div>

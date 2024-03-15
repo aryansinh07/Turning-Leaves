@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import { useState} from 'react'
 import { Link } from 'react-router-dom'
-
+import axios from 'axios'
+import { API_URL_USER } from '../utils/apiURL'
+import { useNavigate } from 'react-router-dom';
 
 const emailjs = require("@emailjs/browser"); 
  
 const Register = () => {
+
+  const navigate = useNavigate();
+  const [errorMsg, setErrorMsg] = useState(''); 
   
   const [formData, setFormData] = useState({
     name:"",
@@ -34,59 +39,68 @@ const Register = () => {
 
     e.preventDefault();
     //dispatch action
-    const serviceId = "service_2uoe68m" ; 
-    const templateId = "template_afw1zrm" ; 
-    const publicKey = "vGwDmMB7XybMR10h6" ; 
-    const otp = generateRandomCode() ; 
-    const templateparams = {
-        user_name : name , 
-        otp, 
-        to_email : email , 
+    const EmailExist = async() => {
+      try {
+        
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+        const res = await axios.get(`${API_URL_USER}/email-exist/${email}` , config); 
+        console.log(res); 
+        if(res.data.exist === true)
+        {
+          setErrorMsg('User Already Exist'); 
+        }
+        else
+        {
+          const serviceId = "service_2uoe68m" ; 
+          const templateId = "template_afw1zrm" ; 
+          const publicKey = "vGwDmMB7XybMR10h6" ; 
+          const otp = generateRandomCode() ; 
+          const templateparams = {
+              user_name : name , 
+              otp, 
+              to_email : email , 
+          }
+      
+          emailjs
+          .send(serviceId, templateId, templateparams, publicKey)
+          .then((promise) => {
+            // console.log(promise);
+
+            navigate('/otp-verification', {
+              state: {
+                otp: otp,
+                formData: formData
+              }
+            });
+      
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        }
+      } catch (error) {
+        console.log(error); 
+      }
     }
 
-    emailjs
-    .send(serviceId, templateId, templateparams, publicKey)
-    .then((promise) => {
-      console.log(promise);
-
-      // Redirect to OTP verification page with otp and formData
-      const queryParams = new URLSearchParams({
-        otp: otp,
-        formData: JSON.stringify(formData),
-      });
-
-      window.location.href = `/otp-verification?${queryParams.toString()}`;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-    
+    EmailExist() ; 
   };
 
   return (
     <div>
         <Navbar/>
-        {/*<div class="m-16 flex flex-row justify-around">
-      <div class="rounded-lg border-2 shadow-lg">
-        <h1 class="m-3 text-center text-xl font-thin ">Sign Up</h1>
-        <form  onSubmit={onSubmitHandler}  class="flex flex-col">
-          <input onChange={onChangeInput} type="text"  value={name}   name="name" class="m-3 rounded-md border-2 bg-gray-50 py-2 pl-2 pr-20 font-mono" placeholder="Name" />
-          <input onChange={onChangeInput} type="text" value={ email} name="email" class="m-3 rounded-md border-2 bg-gray-50 py-2 pl-2 pr-20 font-mono" placeholder="Email" />
-          <input onChange={onChangeInput} type="text" value={password} name="password" class="m-3 rounded-md border-2 bg-gray-50 py-2 pl-2 pr-20 font-mono" placeholder="Password" />
-          <textarea onChange={onChangeInput} rows="5" value={bio} cols="10" name="bio" placeholder="Bio" class="m-3 rounded-md border-2 bg-gray-50 py-2 pl-2 pr-20 font-mono"> </textarea>
-          <button class="m-3 rounded-md border-2 bg-black p-2 px-10 text-sm font-medium text-white hover:bg-gray-900" type='submit'>
-            Sign Up
-          </button>
-        </form>
-      </div>
-  </div>*/}
-       <section class=" my-32">
+       <section class="mt-32 ">
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Create your Account
               </h1>
+              <h2 className='text-red-500 leading-tight font-bold tracking-tight ' > {errorMsg}</h2>
               <form class="space-y-4 md:space-y-6" onSubmit={onSubmitHandler}>
                   <div>
                       <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Name</label>

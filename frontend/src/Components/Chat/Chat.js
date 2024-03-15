@@ -9,6 +9,7 @@ const Chat = () => {
   const userAuthString = localStorage.getItem('userAuth');
   const userAuth = userAuthString ? JSON.parse(userAuthString) : null;
   const user = userAuth?.userFound;
+  //console.log(user._id); 
 
   const [chats, setChats] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
@@ -46,6 +47,8 @@ const Chat = () => {
         if (user) {
           const chatsData = await userChats(user._id);
           setChats(chatsData.data);
+          console.log(chatsData.data); 
+           
         }
       } catch (error) {
         console.log('Error fetching chats:', error);
@@ -81,23 +84,34 @@ const Chat = () => {
   return (
     <div>
       <Navbar />
-      <div className="flex md:flex-row flex-col mt-32">
+      <div className="flex md:flex-row flex-col mt-32 max-w-7xl mx-auto">
         <div className="mr-4 md:w-[20%] w-[80%] flex-grow bg-white p-4 md:ml-16 ml-10">
           {/* Title */}
           <h1 className="mb-4 text-2xl font-semibold">Chats</h1>
           {/* User List*/}
           <hr />
           <div className="mb-4">
-            {chats.map(chat => (
+            {chats ? (<>
+              {chats.map(chat => (
               <div key={chat._id} className="flex items-center m-2 bg-yellow-100 p-4 rounded-md" onClick={() => setCurrentChat(chat)}>
-                {/* Render the other user's profile picture */}
-                <img src={chat.members.filter(member => member._id !== user._id)[0].profilePicture} alt="User" className="w-10 h-10 rounded-full mr-2" />
+                
+                <img src={chat.members.filter(member => member._id !== user._id)[0].profilePicture?   chat.members.filter(member => member._id !== user._id)[0].profilePicture  : 'https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?size=626&ext=jpg&ga=GA1.1.104308764.1701955462&semt=ais'} alt="User" className="w-10 h-10 rounded-full mr-2" />
                 <div className="flex flex-col">
                   <span className="text-sm font-medium">{chat.members.filter(member => member._id !== user._id)[0].name}</span>
                   <span className="text-sm font-light">{checkOnlineStatus(chat)}</span>
                 </div>
               </div>
-            ))}
+              ))}
+            </>):
+            (<>
+              
+              <div className="flex justify-center items-center h-screen">
+            <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900"></div>
+            </div>
+
+            </>)
+            }
+            
           </div>
         </div>
 

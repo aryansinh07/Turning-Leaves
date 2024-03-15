@@ -112,7 +112,8 @@ const AuthContextProvider = ({children}) => {
     const [ state , dispatch] = useReducer(reducer,INITIAL_STATE); 
     const [userBooks, setUserBooks] = useState([]);
     const [sellerProfile , setSellerProfile] = useState([]); 
-    const [userProfile , setUserProfile] = useState([])
+    const [userProfile , setUserProfile] = useState([]); 
+    const [error, setError] = useState(''); 
 
     // register action 
     
@@ -136,9 +137,14 @@ const AuthContextProvider = ({children}) => {
               type: REGISTER_SUCCESS,
               payload: res.data,
             });
+            window.location.href = "/login";
+          }
+          else
+          {
+            setError(res.data.message); 
           }
           //Redirect
-          window.location.href = "/login";
+          
         } catch (error) {
           dispatch({
             type: REGISTER_FAIL,
@@ -158,16 +164,23 @@ const AuthContextProvider = ({children}) => {
             }
         };
         try {
-            const res = await axios.post(`${API_URL_USER}/login`,formdata,config); 
+            const res = await axios.post(`${API_URL_USER}/login`,formdata,config);  
             if(res?.data?.status === "success")
             {
                 dispatch({
                     type:LOGIN_SUCCESS,
                     payload: res.data,
                 })
+                window.location.href = "/"
             }
-            window.location.href = "/"
+            else
+            {
+              setError(res.data.message); 
+
+            }
+            
         } catch (error) {
+            
             dispatch({
                 type:LOGIN_FAILED,
                 payload: error?.response?.data?.message,
@@ -324,7 +337,7 @@ const AuthContextProvider = ({children}) => {
     //post book 
     return (
         
-        <authContext.Provider value={{loginUserAction,registerUserAction,logoutUserAction,fetchProfileAction, getBooksByUser,userBooks, sellerProfile , getSellerProfile , userProfile , getUserProfile, uploadProfilePictureAction, updateUserProfileAction}}>
+        <authContext.Provider value={{loginUserAction,registerUserAction,logoutUserAction,fetchProfileAction, getBooksByUser,userBooks, sellerProfile , getSellerProfile , userProfile , getUserProfile, uploadProfilePictureAction, updateUserProfileAction, error}}>
             {children}
         </authContext.Provider>
         

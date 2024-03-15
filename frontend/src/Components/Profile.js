@@ -40,7 +40,7 @@ const Profile = () => {
         <div className="relative">
           <div
             className="h-64 bg-cover bg-center rounded-t-lg"
-            style={{ backgroundImage: 'url("https://img.freepik.com/free-photo/html-system-website-concept_23-2150376770.jpg?t=st=1709960871~exp=1709964471~hmac=dbbad2408a680bf150d3a99475bcbced56fcf75fa491e50fef9253c7619ce610&w=996")' }}
+            style={{ backgroundImage: 'url("https://img.freepik.com/free-photo/arrangement-different-sized-books-with-copy-space_23-2148721311.jpg?w=1060&t=st=1710519099~exp=1710519699~hmac=18a39980bc4499162e0d0ca6a908d5ce50cbda5e7ecb34a0607500a2ec5b6505")' }}
           ></div>
           <Link to={'/upload-profile-picture'}>
           <button>
@@ -59,7 +59,7 @@ const Profile = () => {
         </div>
 
         
-        <div class="mt-8 overflow-hidden  rounded-lg border border-blue-300   shadow">
+        <div class="mt-8 overflow-hidden  rounded-lg border    shadow">
     <div class="px-4 py-5 sm:px-6">
         <h3 class="text-lg leading-6 font-medium text-gray-900">
             User Profile
@@ -70,7 +70,7 @@ const Profile = () => {
     </div>
     <div class="border-t border-gray-200 px-4 py-5 sm:p-0 ">
         <dl class="sm:divide-y sm:divide-gray-200">
-            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 bg-lime-100 ">
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6  ">
                 <dt class="text-sm font-medium text-gray-500 ">
                     Full name
                 </dt>
@@ -78,7 +78,7 @@ const Profile = () => {
                     {userProfile.name}
                 </dd>
             </div>
-            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 bg-orange-100">
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 ">
                 <dt class="text-sm font-medium text-gray-500">
                     Email address
                 </dt>
@@ -86,15 +86,8 @@ const Profile = () => {
                     {userProfile.email}
                 </dd>
             </div>
-            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 bg-green-100">
-                <dt class="text-sm font-medium text-gray-500">
-                    Phone number
-                </dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    (123) 456-7890
-                </dd>
-            </div>
-            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 bg-purple-100">
+            
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 ">
                 <dt class="text-sm font-medium text-gray-500">
                     Address
                 </dt>
@@ -104,7 +97,7 @@ const Profile = () => {
                 </dd>
             </div>
 
-            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6  bg-indigo-200">
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6  ">
                 <dt class="text-sm font-medium text-gray-500">
                     Registered On
                 </dt>

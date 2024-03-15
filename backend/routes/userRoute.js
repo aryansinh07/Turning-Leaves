@@ -2,7 +2,7 @@ const express = require("express");
 const multer = require("multer"); 
 const storage = require("../config/cloudinary"); 
 
-const {userRegisterCtrl , userLoginCtrl , userProfileCtrl,  fetchUsersCtrl,  userDeleteCtrl , profilePhotoCtrl , fetchUserBooksCtrl, userProfileUpdateCtrl} = require("../controllers/userController") ; 
+const {userRegisterCtrl , userLoginCtrl , userProfileCtrl,  fetchUsersCtrl,  userDeleteCtrl , profilePhotoCtrl , fetchUserBooksCtrl, userProfileUpdateCtrl, userExistCtrl} = require("../controllers/userController") ; 
 const isLogin = require("../middlewares/isLogin");
 
 const userRoute = express.Router() ; 
@@ -23,5 +23,7 @@ userRoute.delete('', isLogin ,  userDeleteCtrl);
 userRoute.put("/profile-photo-upload" , isLogin , upload.single('profilePicture') , profilePhotoCtrl); 
 
 userRoute.put("/update-user-profile",isLogin , userProfileUpdateCtrl); 
+
+userRoute.get("/email-exist/:email", userExistCtrl); 
 
 module.exports = userRoute ; 

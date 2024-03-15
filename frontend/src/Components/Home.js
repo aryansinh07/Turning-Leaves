@@ -2,6 +2,7 @@ import React, { useState , useContext, useEffect } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import { bookContext } from './context/bookContext/bookContext' 
+import FAQ from './FAQ'
 
 const Home = () => {
 
@@ -327,6 +328,7 @@ const Home = () => {
     </div>
   </div>
 </section>
+<FAQ/>
 
 
 

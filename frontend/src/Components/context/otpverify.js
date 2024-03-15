@@ -3,19 +3,23 @@ import Footer from '../Footer'
 import {useContext ,  useState} from 'react'
 import { authContext } from './AuthContext/AuthContext'
 import Navbar from '../Navbar'
+import { useLocation } from 'react-router-dom';
 
 
 const OTPverify = () => {
    
-  const { registerUserAction } = useContext(authContext); 
+  const { registerUserAction  } = useContext(authContext); 
   const [otpformData, setotpFormData] = useState({
     userOtp: 0,
   });
 
-  const queryParams = new URLSearchParams(window.location.search);
+  /*const queryParams = new URLSearchParams(window.location.search);
   const otp = queryParams.get('otp');
   const formDataString = queryParams.get('formData');
-  const formData = JSON.parse(formDataString);
+  const formData = JSON.parse(formDataString);*/
+
+  const location = useLocation();
+  const { otp, formData } = location.state;
 
   const onChangeInput = e => {
     setotpFormData({...otpformData , [e.target.name]: e.target.value });
@@ -43,16 +47,6 @@ const OTPverify = () => {
   return (
     <div>
         <Navbar/>
-        {
-        /*<div class="m-16 flex flex-row justify-around">
-      <div class="rounded-lg border-2 shadow-lg">
-        <h1 class="m-3 text-center text-xl font-thin ">OTP Verification </h1>
-        <form class="flex flex-col" onSubmit={onSubmitHandler}>
-          <input  onChange={onChangeInput}  type="number" name="userOtp" value={otpformData.userOtp} class="m-3 rounded-md border-2 bg-gray-50 py-2 pl-2 pr-20 font-mono" placeholder="OTP" />
-          <button class="m-3 rounded-md border-2 bg-black p-2 px-10 text-sm font-medium text-white hover:bg-gray-900 " type="submit">Enter</button>
-        </form>
-      </div>
-        </div>*/}
     
     <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-12">
   <div class="relative bg-white px-6 pt-10 pb-9 shadow-xl mx-auto w-full max-w-lg rounded-2xl">
