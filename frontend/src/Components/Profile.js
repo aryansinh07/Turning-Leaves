@@ -14,6 +14,28 @@ const Profile = () => {
 
   const { userProfile, getUserProfile } = useContext(authContext);
   const userId = userAuth.userFound._id;
+  const [city , setCity] = useState('City'); 
+
+  async function getCityFromCoordinates(latitude, longitude) {
+    const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (data.address && data.address.city) {
+        setCity(data.address.city);
+        return ; 
+    } else {
+        console.log('City not found in the response.');
+    }
+}
+
+useEffect(() => {
+  if (userAuth.userFound.location) {
+    const [latitude, longitude] = userAuth.userFound.location.split(" ");
+    getCityFromCoordinates(latitude, longitude);
+  }
+}, []); 
 
   useEffect(() => {
     getUserProfile(userId);
@@ -89,11 +111,10 @@ const Profile = () => {
             
             <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 ">
                 <dt class="text-sm font-medium text-gray-500">
-                    Address
+                    Location
                 </dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    123 Main St<br/>
-                     Anytown, USA 12345
+                    {city}
                 </dd>
             </div>
 

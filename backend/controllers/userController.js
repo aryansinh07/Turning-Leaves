@@ -5,10 +5,10 @@ const { appErr } = require("../utilis/appErr");
 const generateToken = require("../utilis/generateToken");
 
 const userRegisterCtrl = async (req,res,next) => {
-    const {name , email , password , bio } = req.body ; 
+    const {name , email , password , bio , location } = req.body ; 
     try {
         
-        if(!name || !email || !password ||!bio)
+        if(!name || !email || !password || !bio)
         { 
             return next(appErr("All fields are mandatory",404)) ; 
         }
@@ -26,7 +26,8 @@ const userRegisterCtrl = async (req,res,next) => {
             name , 
             email , 
             password: passwordHashed,
-            bio
+            bio, 
+            location,
         }); 
         return res.json({
             status:"success",
