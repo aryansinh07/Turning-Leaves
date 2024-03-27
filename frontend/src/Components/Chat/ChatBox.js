@@ -93,7 +93,7 @@ useEffect(()=> {
     <hr class="mb-4" />
     
     {/* Message Section */}
-    <div class="max-h-72   min-h-72 overflow-y-auto">
+    <div class="md:max-h-72   md:min-h-72  min-h-96 max-h-[28rem] overflow-y-auto">
       
       <div class="flex flex-col space-y-4">
         {loading ? (

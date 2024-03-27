@@ -3,11 +3,13 @@ const User = require("../models/User");
 const { appErr } = require("../utilis/appErr");
 
 const postReviewCtrl = async(req,res,next) =>{
-    const {rating , reviewText } = req.body ; 
+    const {rating , reviewText , reviewerName , reviewerProfilePicture } = req.body ; 
     try {
         const reviewposted = await Review.create({
             reviewer:req.user , 
             reviewedUser: req.params.id ,
+            reviewerName , 
+            reviewerProfilePicture , 
             rating , 
             reviewText 
         }); 

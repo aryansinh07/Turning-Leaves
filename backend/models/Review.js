@@ -9,6 +9,12 @@ const reviewSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
+  reviewerName: {
+    type: String
+  },
+  reviewerProfilePicture : {
+    type: String
+  },
   rating: {
     type: Number, 
     required: true,

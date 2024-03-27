@@ -86,7 +86,7 @@ const BookDetails = () => {
             </div>
         )}
       </div>
-      <h1 class="mx-auto text-3xl text-center my-8 font-varela"> More Books by the User </h1>
+      <h1 class="md:mx-auto mx-16 text-3xl text-center my-8 font-varela"> More Books by the User </h1>
       { userBooks ? 
     (
       <div className="flex flex-row mx-16 flex-wrap md:max-w-5xl md:mx-auto ">

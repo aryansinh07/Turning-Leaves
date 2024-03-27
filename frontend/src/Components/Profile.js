@@ -58,7 +58,7 @@ useEffect(() => {
   return (
     <div>
       <Navbar />
-      <div className="max-w-5xl mx-auto bg-white shadow-md rounded-lg p-6">
+      {userProfile ? (<div className="max-w-5xl mx-auto bg-white shadow-md rounded-lg p-6">
         <div className="relative">
           <div
             className="h-64 bg-cover bg-center rounded-t-lg"
@@ -137,7 +137,10 @@ useEffect(() => {
             Edit
           </button>
         </Link>
-      </div>
+      </div>) : (  <div className="flex justify-center items-center h-screen">
+     <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900"></div>
+  </div>)}
+      
 
       <h1 className="mx-16 text-3xl font my-8 text-center font-varela">Latest Books</h1>
       
@@ -184,8 +187,8 @@ useEffect(() => {
           ))}
         </div>
       ) : (
-        <div>
-          <h2 className="text-xl font-semibold mt-6 mb-6">No Books Posted</h2>
+        <div className="flex justify-center h-screen">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900"></div>
         </div>
       )}
 
@@ -232,11 +235,9 @@ useEffect(() => {
             ))}
           </div>
         ) : (
-          <div>
-            <h2 className="text-xl font-semibold mt-6 mb-6">
-              No Books Wishlisted
-            </h2>
-          </div>
+          <div className="flex justify-center h-screen">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900"></div>
+       </div>
         )}
       </div>
       <Footer />

@@ -9,7 +9,6 @@ import Footer from './Footer';
 const RateUser = () => {
 
   const {id} = useParams() ; 
-  console.log(id); 
   const userAuthString = localStorage.getItem('userAuth');
   const userAuth = userAuthString ? JSON.parse(userAuthString) : null;
   const userId = userAuth.userFound._id ; 
@@ -17,7 +16,9 @@ const RateUser = () => {
   const [formData , setFormData] = useState({
     reviewer: userId,
     reviewedUser: id ,
-    rating:Number , 
+    reviewerName: userAuth.userFound.name , 
+    reviewerProfilePicture : userAuth.userFound.profilePicture , 
+    rating:Number, 
     reviewText: ""
   }); 
 
