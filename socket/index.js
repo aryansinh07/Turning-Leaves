@@ -17,6 +17,12 @@ const io = new Server(server, {
   }
 });
 
+app.get("/",(req,res)=>{
+  res.send({
+    "msg":"This is an API for the chat functionality"
+  })
+})
+
 let activeUsers = [];
 
 io.on("connection", (socket) => {
