@@ -146,7 +146,7 @@ const Chat = () => {
   const [showChats, setShowChats] = useState(false); // State to control visibility of chats
 
   useEffect(() => {
-    setSocket(io('http://localhost:8800'));
+    setSocket(io('https://turning-leaves-socket.vercel.app'));
   }, []);
 
   useEffect(() => {
