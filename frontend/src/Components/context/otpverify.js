@@ -13,13 +13,8 @@ const OTPverify = () => {
     userOtp: 0,
   });
 
-  /*const queryParams = new URLSearchParams(window.location.search);
-  const otp = queryParams.get('otp');
-  const formDataString = queryParams.get('formData');
-  const formData = JSON.parse(formDataString);*/
-
   const location = useLocation();
-  const { otp, formData } = location.state;
+  let { otp, formData } = location.state;
 
   const onChangeInput = e => {
     setotpFormData({...otpformData , [e.target.name]: e.target.value });
@@ -29,16 +24,18 @@ const OTPverify = () => {
 
     e.preventDefault();
     console.log(otp);
-    console.log(typeof(otp)) 
-    console.log(otpformData.userOtp); 
-    console.log(typeof(otpformData.userOtp)); 
+    console.log((otpformData.userOtp)); 
+
+    otp = String(otp); 
 
     if(otp === otpformData.userOtp)
     {
         registerUserAction(formData);
+        
     }
     else
     {
+        
         window.alert("Oops, Wrong Otp Entered !!! "); 
         window.location.href = "/sign-up" ; 
     }

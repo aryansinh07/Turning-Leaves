@@ -137,7 +137,7 @@ const AuthContextProvider = ({children}) => {
               type: REGISTER_SUCCESS,
               payload: res.data,
             });
-            window.location.href = "/login";
+            window.location.href = "/email-verified-success";
           }
           else
           {

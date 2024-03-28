@@ -18,7 +18,7 @@ const EmailSuccess = () => {
         </svg>
         <h1 class="text-2xl font-bold text-gray-800 mb-4 font-varela">Email Verification Successful</h1>
         <p class="text-gray-600 mb-8">Your email has been successfully verified.</p>
-        <Link to={`/`}>
+        <Link to={`/login`}>
         <button  class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Continue</button>
         </Link>
       </div>
