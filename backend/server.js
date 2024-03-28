@@ -26,8 +26,7 @@ app.use(express.static(__dirname + "/public"));
 
 
 app.get("/",(req,res)=>{
-    
-    return res.json({
+     res.send({
         "msg":"Welcome to my API"
     }); 
 }); 
