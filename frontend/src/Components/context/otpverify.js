@@ -64,7 +64,7 @@ const OTPverify = () => {
         <form onSubmit={onSubmitHandler}>
           <div class="flex flex-col space-y-16">
             <div class="flex flex-row items-center justify-between mx-auto w-full max-w-xs">
-                <input onChange={onChangeInput} name="userOtp" value={otpformData.userOtp} class="w-full h-full flex flex-col items-center justify-center text-center px-5 py-2 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700" type="number" />
+                <input onChange={onChangeInput} name="userOtp" value={otpformData.userOtp} class="w-full h-full flex flex-col items-center justify-center text-center px-5 py-2 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700" type="text" />
            </div>
 
             <div class="flex flex-col space-y-5">
