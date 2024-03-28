@@ -10,7 +10,7 @@ const OTPverify = () => {
    
   const { registerUserAction  } = useContext(authContext); 
   const [otpformData, setotpFormData] = useState({
-    userOtp: 0,
+    userOtp: "",
   });
 
   /*const queryParams = new URLSearchParams(window.location.search);
