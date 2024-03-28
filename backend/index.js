@@ -42,7 +42,7 @@ app.use('/api/v1/chat',chatRouter);
 app.use('/api/v1/message',messageRouter); 
 
 
-const PORT = 7000 ; 
+const PORT = process.env.PORT || 7000 ; 
 
 app.listen(PORT , ()=>{
     console.log(`Server is up and running on the port no ${PORT}`)

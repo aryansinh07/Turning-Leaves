@@ -4,7 +4,7 @@
   "description": "A full stack web portal for buying and selling of old books ",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server"
+    "start": "node index.js"
   },
   "author": "Aryan Singh",
   "license": "ISC",
