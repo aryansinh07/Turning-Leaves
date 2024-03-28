@@ -10,7 +10,7 @@ app.use(cors());
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000", // Allow requests from the React frontend
+    origin: "https://turning-leaves-frontend.vercel.app", // Allow requests from the React frontend
     methods: ["GET", "POST"], // Allow only GET and POST requests
     allowedHeaders: ["my-custom-header"],
     credentials: true // Allow credentials (cookies, authorization headers, etc.)
@@ -51,6 +51,7 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(8800, () => {
-  console.log("Socket.IO server is running on port 8800");
+const PORT = process.env.PORT || 8800 ; 
+server.listen(PORT, () => {
+  console.log(`Socket.IO server is running on port ${PORT}`);
 });
