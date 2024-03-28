@@ -28,8 +28,10 @@ const OTPverify = () => {
   const onSubmitHandler = e => {
 
     e.preventDefault();
-    console.log(otp); 
+    console.log(otp);
+    console.log(typeof(otp)) 
     console.log(otpformData.userOtp); 
+    console.log(typeof(otpformData.userOtp)); 
 
     if(otp === otpformData.userOtp)
     {
