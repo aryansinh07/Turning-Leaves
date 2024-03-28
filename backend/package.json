@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "A full stack web portal for buying and selling of old books ",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "start": "nodemon server"
   },

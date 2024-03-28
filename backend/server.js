@@ -9,12 +9,7 @@ const cors = require("cors");
 const chatRouter = require("./routes/chatRoute");
 const messageRouter = require("./routes/messageRoute");
 
-
 const app = express() ; 
-
-
-
-
 
 app.use(express.json()); 
 
@@ -30,7 +25,12 @@ app.use(express.static(__dirname + "/public"));
 
 
 
-
+app.get("/",(req,res)=>{
+    
+    return res.json({
+        "msg":"Welcome to my API"
+    }); 
+}); 
 
 app.use('/api/v1/users',userRoute); 
 
