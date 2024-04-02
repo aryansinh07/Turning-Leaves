@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { getMessages , addMessages } from './chatHelper';
 import { format } from "timeago.js";
 import { useRef } from "react";
 import InputEmoji from 'react-input-emoji' ; 
+import { authContext } from '../context/AuthContext/AuthContext';
+const emailjs = require("@emailjs/browser"); 
 
 const ChatBox = ({ chat, currentUser , setSendMessage,  receivedMessage  }) => {
   const otherUser = chat?.members.find(member => member._id !== currentUser);
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [newMessage, setNewMessage] = useState("");
+  const {userProfile , getUserProfile} = useContext(authContext); 
 
+  const userAuthString = localStorage.getItem('userAuth');
+  const userAuth = userAuthString ? JSON.parse(userAuthString) : null;
   
   useEffect(() => {
     const fetchMessages = async () => {
@@ -48,6 +53,8 @@ const ChatBox = ({ chat, currentUser , setSendMessage,  receivedMessage  }) => {
   }
 
   const receiverId = chat.members.find((member)=>member._id!==currentUser)._id;
+
+  
   //send message to socket server
   setSendMessage({message, receiverId}); 
   
@@ -61,6 +68,40 @@ const ChatBox = ({ chat, currentUser , setSendMessage,  receivedMessage  }) => {
   catch
   {
     console.log("error")
+  }
+  
+  sendNotification(receiverId) ; 
+}
+
+const sendNotification = async (receiverId) => {
+
+  try {
+     
+    await getUserProfile(receiverId); 
+    if(userProfile)
+    {
+      
+      const serviceId = "service_2uoe68m" ; 
+      const templateId = "template_0e8ode9" ; 
+      const publicKey = "vGwDmMB7XybMR10h6" ; 
+      const templateparams = {
+                to_name : userProfile.name , 
+                from_name : userAuth.userFound.name, 
+                to_email : userProfile.email  
+            }
+        
+            emailjs
+            .send(serviceId, templateId, templateparams, publicKey)
+            .then((promise) => {
+              // console.log(promise);
+            })
+            .catch((error) => {
+              console.log(error);
+            }); 
+    }
+    
+  } catch (error) {
+    console.log(error); 
   }
 }
 

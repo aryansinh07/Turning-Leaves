@@ -3,6 +3,9 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import { bookContext } from './context/bookContext/bookContext' 
 import FAQ from './FAQ'
+import krishna from "../assets/krishna.png"
+import omsingh from "../assets/omSingh.jpeg" ; 
+import aryan from "../assets/aryan.png"
 
 const Home = () => {
 
@@ -301,7 +304,7 @@ const Home = () => {
   <div class="flex flex-col md:flex-row justify-center space-x-0 md:space-x-10">
     <div class="ease-in-out transform hover:scale-105 duration-300 mb-4 md:mb-0">
       <div class="flex justify-center items-center">
-        <img src="https://img.freepik.com/free-photo/smiling-happy-businessman-looking-camera_23-2148113005.jpg?t=st=1709786836~exp=1709790436~hmac=a0c244b2f4a4f92eb43c8b581b9f91cd5cfff22fc5d9982acc01987bbbdc201a&w=996" alt="" class="h-32 w-32 rounded-full" />
+        <img src={aryan} alt="" class="h-32 w-32 rounded-full" />
       </div>
       <div class="flex justify-center flex-col items-center shadow-xl rounded-lg p-4 md:p-12">
         <h2 class="font-medium text-xl">Aryan Singh</h2>
@@ -310,7 +313,7 @@ const Home = () => {
     </div>
     <div class="ease-in-out transform hover:scale-105 duration-300 mb-4 md:mb-0">
       <div class="flex justify-center items-center">
-        <img src="https://img.freepik.com/free-photo/close-up-portrait-young-bearded-man-white-shirt-jacket-posing-camera-with-broad-smile-isolated-gray_171337-629.jpg?t=st=1709787833~exp=1709791433~hmac=96603c79715fd1d9b45082bf19d5ad6dd1a5e824af31eb591547d2f7e9042cf7&w=996" alt="" class="h-32 w-32 rounded-full" />
+        <img src={omsingh} alt="" class="h-32 w-32 rounded-full" />
       </div>
       <div class="flex justify-center flex-col items-center shadow-xl rounded-lg p-4 md:p-12">
         <h2 class="font-medium text-xl">Om Singh</h2>
@@ -319,7 +322,7 @@ const Home = () => {
     </div>
     <div class="ease-in-out transform hover:scale-105 duration-300">
       <div class="flex justify-center items-center">
-        <img src="https://img.freepik.com/free-photo/young-beautiful-woman-smiling-posing-purple-wall_176420-2852.jpg?t=st=1709787331~exp=1709790931~hmac=81cffac3d809351ac8f32bb9a8a6a62bfe936022179416d789cec0b5d06dfa59&w=996" alt="" class="h-32 w-32 rounded-full" />
+        <img src={krishna} alt="" class="h-32 w-32 rounded-full" />
       </div>
       <div class="flex justify-center flex-col items-center shadow-xl rounded-lg p-4 md:p-12">
         <h2 class="font-medium text-xl">Krishna Mistry</h2>

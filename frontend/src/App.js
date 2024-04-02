@@ -20,6 +20,7 @@ import EmailSuccess from "./Components/EmailSuccess";
 import PrivacyPolicy from "./Components/PrivacyPolicy";
 import FAQ from "./Components/FAQ";
 import FAQPAGE from "./Components/FAQPAGE";
+import WishlistSuccess from "./Components/WishlistSuccess";
 
 
 
@@ -49,6 +50,7 @@ function App() {
       <Route path="/email-verified-success" element={<EmailSuccess/>}/>
       <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
       <Route path="/faq" element={<FAQPAGE/>}/>
+      <Route path="/book-added-wishlist-success" element={<WishlistSuccess/>}/>
      </Routes>
      </BrowserRouter>
     </div>

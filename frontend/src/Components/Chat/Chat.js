@@ -151,7 +151,6 @@ const Chat = () => {
 
   useEffect(() => {
     socket?.emit("new-user-add", user._id);
-
     socket?.on("get-users", (users) => {
       setOnlineUsers(users);
     });
@@ -175,7 +174,7 @@ const Chat = () => {
 
     fetchChats();
   }, [user]);
-
+  
   useEffect(() => {
     if (sendMessage !== null) {
       socket?.emit("send-message", sendMessage);

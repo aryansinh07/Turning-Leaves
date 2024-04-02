@@ -166,7 +166,7 @@ useEffect(() => {
                 </div>
               )}
 
-              <div className="px-5 pb-5">
+              <div className="px-5 pb-5 mt-2">
                 <h5 className="text-xl font-semibold tracking-tight text-gray-900">
                   {listing.title}
                 </h5>
@@ -214,7 +214,7 @@ useEffect(() => {
                   </div>
                 )}
 
-                <div className="px-5 pb-5">
+                <div className="px-5 pb-5 mt-2">
                   <h5 className="text-xl font-semibold tracking-tight text-gray-900">
                     {listing.title}
                   </h5>
@@ -230,6 +230,7 @@ useEffect(() => {
                       Buy Now
                     </Link>
                   </div>
+                  
                 </div>
               </div>
             ))}

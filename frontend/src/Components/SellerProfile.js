@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { authContext } from './context/AuthContext/AuthContext';
 import Navbar from './Navbar';
@@ -6,7 +6,6 @@ import Footer from './Footer';
 import axios from 'axios';
 import { userChats } from './Chat/chatHelper';
 import { API_URL_CHAT } from '../utils/apiURL';
-
 
 
 const SellerProfile = () => {
@@ -17,11 +16,34 @@ const SellerProfile = () => {
     const userAuthString = localStorage.getItem('userAuth');
     const userAuth = userAuthString ? JSON.parse(userAuthString) : null;
     const user = userAuth?.userFound._id ; 
+    const [city , setCity] = useState('City');
 
     useEffect(() => {
         getSellerProfile(id);
        console.log(sellerProfile); 
-    }, [id, getSellerProfile]);
+    }, []);
+
+    async function getCityFromCoordinates(latitude, longitude) {
+      const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
+  
+      const response = await fetch(url);
+      const data = await response.json();
+  
+      if (data.address && data.address.city) {
+          console.log(data.address.city); 
+          setCity(data.address.city);
+          return ; 
+      } else {
+          console.log('City not found in the response.');
+      }
+  }
+  
+  useEffect(() => {
+    if (sellerProfile.location) {
+      const [latitude, longitude] = sellerProfile.location.split(" ");
+      getCityFromCoordinates(latitude, longitude);
+    }
+  }, [sellerProfile]); 
 
     const createdAtAsDate = new Date(sellerProfile.createdAt);
 
@@ -74,11 +96,14 @@ const SellerProfile = () => {
             style={{ backgroundImage: 'url("https://img.freepik.com/free-photo/html-system-website-concept_23-2150376770.jpg?t=st=1709960871~exp=1709964471~hmac=dbbad2408a680bf150d3a99475bcbced56fcf75fa491e50fef9253c7619ce610&w=996")' }}
           ></div>
           
+          <Link to={sellerProfile.profilePicture}>
           <img
             src={sellerProfile.profilePicture || 'profile-picture.jpg'}
             alt="Profile Picture"
             className="w-32 h-32 rounded-full absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 border-4 border-white"
           />
+          </Link>
+          
           
           
         </div>
@@ -99,7 +124,7 @@ const SellerProfile = () => {
     </div>
     <div class="border-t border-gray-200 px-4 py-5 sm:p-0 ">
         <dl class="sm:divide-y sm:divide-gray-200">
-            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 bg-lime-100 ">
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6  ">
                 <dt class="text-sm font-medium text-gray-500 ">
                     Full name
                 </dt>
@@ -107,7 +132,7 @@ const SellerProfile = () => {
                     {sellerProfile.name}
                 </dd>
             </div>
-            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 bg-orange-100">
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 ">
                 <dt class="text-sm font-medium text-gray-500">
                     Email address
                 </dt>
@@ -115,25 +140,17 @@ const SellerProfile = () => {
                     {sellerProfile.email}
                 </dd>
             </div>
-            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 bg-green-100">
+            
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 ">
                 <dt class="text-sm font-medium text-gray-500">
-                    Phone number
+                    Location
                 </dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    (123) 456-7890
-                </dd>
-            </div>
-            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 bg-purple-100">
-                <dt class="text-sm font-medium text-gray-500">
-                    Address
-                </dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    123 Main St<br/>
-                     Anytown, USA 12345
+                    {city}
                 </dd>
             </div>
 
-            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6  bg-indigo-200">
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6  ">
                 <dt class="text-sm font-medium text-gray-500">
                     Registered On
                 </dt>
@@ -141,13 +158,9 @@ const SellerProfile = () => {
                     {createdAtDate}
                 </dd>
             </div>
-
-            
-          
-
         </dl>
-        
     </div>
+
     </div>
     <button class=" mt-2 p-1.5 px-8 mr-3  bg-pink-300 rounded-md text-lg font-bold tracking-wide">
               <Link to='/chat' onClick={()=> createChat(user , sellerProfile._id)} >
@@ -184,7 +197,7 @@ const SellerProfile = () => {
           </div>
         )}
          
-             <div class="px-5 pb-5">
+             <div class="px-5 pb-5 mt-2">
                  
                  <h5 class="text-xl font-semibold tracking-tight text-gray-900 "> {listing.title} </h5>
          

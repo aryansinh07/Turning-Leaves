@@ -106,15 +106,22 @@ const BookDetails = () => {
     </div>
   )}
    
-       <div class="px-5 pb-5">
-           
-           <h5 class="text-xl font-semibold tracking-tight text-gray-900 "> {listing.title} </h5>
-   
-           <div class="flex items-center justify-between my-2">
-               <span class="text-3xl font-bold text-gray-900"> {listing.price} </span>
-               <Link to={`/book-details/${listing._id}`} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Buy Now</Link>
-           </div>
-       </div>
+   <div className="px-5 pb-5 mt-2">
+          <h5 className="text-xl font-semibold tracking-tight text-gray-900">
+            {listing.title}
+          </h5>
+          <div className="flex items-center justify-between my-2">
+            <span className="text-3xl font-bold text-gray-900">
+              {listing.price}
+            </span>
+            <Link
+              to={`/book-details/${listing._id}`}
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+            >
+              Buy Now
+            </Link>
+          </div>
+        </div>
    </div>
    
       
