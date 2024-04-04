@@ -214,6 +214,7 @@ const Chat = () => {
                 <hr />
                 {chats ? (
                   <>
+                  {chats.length>0 ? (<>
                     {chats.map(chat => (
                       <div key={chat._id} className="flex items-center m-2 bg-yellow-100 p-4 rounded-md" onClick={() => setCurrentChat(chat)}>
                         <img src={chat.members.filter(member => member._id !== user._id)[0].profilePicture || 'https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?size=626&ext=jpg&ga=GA1.1.104308764.1701955462&semt=ais'} alt="User" className="w-10 h-10 rounded-full mr-2" />
@@ -223,6 +224,9 @@ const Chat = () => {
                         </div>
                       </div>
                     ))}
+                   </>) : (<> <h2 className=' text-xl font-semibold mt-4'> No Chats</h2> 
+                   </>)}
+                    
                   </>
                 ) : (
                   <div className="flex justify-center items-center h-screen">

@@ -18,7 +18,6 @@ import RateUser from "./Components/RateUser";
 import EditBooks from "./Components/EditBooks";
 import EmailSuccess from "./Components/EmailSuccess";
 import PrivacyPolicy from "./Components/PrivacyPolicy";
-import FAQ from "./Components/FAQ";
 import FAQPAGE from "./Components/FAQPAGE";
 import WishlistSuccess from "./Components/WishlistSuccess";
 import ForgetPassword from "./Components/ForgetPassword";

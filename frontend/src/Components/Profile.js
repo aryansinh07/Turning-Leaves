@@ -11,7 +11,7 @@ const Profile = () => {
   const userAuth = userAuthString ? JSON.parse(userAuthString) : null;
   const createdAtAsDate = new Date(userAuth.userFound.createdAt);
   const createdAtDate = createdAtAsDate.toDateString();
-
+  
   const { userProfile, getUserProfile } = useContext(authContext);
   const userId = userAuth.userFound._id;
   const [city , setCity] = useState('City'); 
@@ -29,6 +29,8 @@ const Profile = () => {
         console.log('City not found in the response.');
     }
 }
+
+
 
 useEffect(() => {
   if (userAuth.userFound.location) {
@@ -55,6 +57,14 @@ useEffect(() => {
     }
   };
 
+  
+
+  const { logoutUserAction } = useContext(authContext);
+
+  const logoutFunc = () => {
+    logoutUserAction();
+  }
+
   return (
     <div>
       <Navbar />
@@ -64,15 +74,18 @@ useEffect(() => {
             className="h-64 bg-cover bg-center rounded-t-lg"
             style={{ backgroundImage: 'url("https://img.freepik.com/free-photo/arrangement-different-sized-books-with-copy-space_23-2148721311.jpg?w=1060&t=st=1710519099~exp=1710519699~hmac=18a39980bc4499162e0d0ca6a908d5ce50cbda5e7ecb34a0607500a2ec5b6505")' }}
           ></div>
-          <Link to={'/upload-profile-picture'}>
-          <button>
-          <img
+          {userProfile.profilePicture ? (<img
             src={userProfile.profilePicture || 'profile-picture.jpg'}
             alt="Profile Picture"
             className="w-32 h-32 rounded-full absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 border-4 border-white"
-          />
+          />):(<Link to={'/upload-profile-picture'}>
+          <button>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+</svg>
           </button>
-          </Link>
+          </Link>)}
+          
           
         </div>
         <div className="mt-16 text-center">
@@ -81,7 +94,7 @@ useEffect(() => {
         </div>
 
         
-        <div class="mt-8 overflow-hidden  rounded-lg border    shadow">
+        <div class="mt-8 overflow-hidden  rounded-lg border border-blue-300    shadow">
     <div class="px-4 py-5 sm:px-6">
         <h3 class="text-lg leading-6 font-medium text-gray-900">
             User Profile
@@ -137,6 +150,11 @@ useEffect(() => {
             Edit
           </button>
         </Link>
+        
+          <button onClick={logoutFunc} className="mx-2 ease-in-out transform hover:scale-105 duration-300 mt-2 p-1.5 px-8 bg-blue-500 rounded-md text-lg font-bold tracking-wide hover:bg-blue-600">
+            Logout
+          </button>
+        
       </div>) : (  <div className="flex justify-center items-center h-screen">
      <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900"></div>
   </div>)}

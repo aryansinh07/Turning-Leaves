@@ -162,16 +162,16 @@ const SellerProfile = () => {
     </div>
 
     </div>
-    <button class=" mt-2 p-1.5 px-8 mr-3  bg-pink-300 rounded-md text-lg font-bold tracking-wide">
+    <button class=" mt-2 p-1.5 px-8 mr-3  bg-pink-300 rounded-md text-lg font-bold tracking-wide" hidden={sellerProfile._id===user}>
               <Link to='/chat' onClick={()=> createChat(user , sellerProfile._id)} >
                    Chat
               </Link>
-            </button>
-            <Link to={`/rate/${sellerProfile._id}`}>
-            <button class=" mt-2 p-1.5 px-8 bg-orange-300 rounded-md text-lg font-bold tracking-wide">
+    </button>
+    <Link to={`/rate/${sellerProfile._id}`}>
+            <button class=" mt-2 p-1.5 px-8 bg-orange-300 rounded-md text-lg font-bold tracking-wide" hidden={sellerProfile._id===user}>
               Rate me
             </button>
-            </Link>
+    </Link>
         
       </div>
     
