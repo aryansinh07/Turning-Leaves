@@ -120,7 +120,7 @@ const OTPverify = () => {
             <div class="flex flex-col space-y-5">
             <div>
                 <button onClick={sendEmail} disabled={otpSent}  class="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-green-700 border-none text-white text-sm shadow-sm">
-                  Send Otp 
+                  {otpSent ? 'Otp Sent':'Send Otp'}
                 </button>
             </div>
             <div>
