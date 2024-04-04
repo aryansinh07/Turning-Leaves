@@ -80,8 +80,8 @@ useEffect(() => {
             alt="Profile Picture"
             className="w-32 h-32 rounded-full absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 border-4 border-white"
           />):(<Link to={'/upload-profile-picture'}>
-          <span className="flex items-center w-auto h-auto rounded-sm bg-gray-300 hover:bg-gray-400 py-1 px-2">
-            <FaUpload className="mr-2 mt-2 font-varela" /> {/* Icon */}
+          <span className="flex items-center w-auto h-auto rounded-sm bg-blue-300 hover:bg-blue-400 py-1 px-2 mt-2">
+            <FaUpload className="mr-2 font-varela" /> {/* Icon */}
             Upload Profile Photo 
           </span>
         </Link>
