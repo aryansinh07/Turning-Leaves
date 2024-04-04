@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { authContext } from './context/AuthContext/AuthContext';
 import axios from 'axios';
 import { API_URL_USER } from '../utils/apiURL';
+import { FaUpload } from 'react-icons/fa';
 
 const Profile = () => {
   const userAuthString = localStorage.getItem('userAuth');
@@ -79,12 +80,12 @@ useEffect(() => {
             alt="Profile Picture"
             className="w-32 h-32 rounded-full absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 border-4 border-white"
           />):(<Link to={'/upload-profile-picture'}>
-          <button>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 rounded-full absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 border-4 border-white">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
-</svg>
-          </button>
-          </Link>)}
+          <span className="flex items-center w-auto h-auto rounded-full bg-gray-300 hover:bg-gray-400 py-1 px-2">
+            <FaUpload className="mr-2" /> {/* Icon */}
+            Upload Photo 
+          </span>
+        </Link>
+        )}
           
           
         </div>
