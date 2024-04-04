@@ -5,12 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AuthContextProvider from './Components/context/AuthContext/AuthContext';
 import BookContextProvider from './Components/context/bookContext/bookContext';
-
+import { Analytics } from '@vercel/analytics/react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <AuthContextProvider>
     <BookContextProvider>
+       <Analytics/>
        <App/>
     </BookContextProvider>
   </AuthContextProvider>

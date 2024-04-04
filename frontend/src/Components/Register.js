@@ -7,13 +7,12 @@ import axios from 'axios'
 import { API_URL_USER } from '../utils/apiURL'
 import { useNavigate } from 'react-router-dom';
 
-const emailjs = require("@emailjs/browser"); 
- 
 const Register = () => {
   
   const [latitude , setLatitude] = useState(''); 
   const [longitude , setLongitude] = useState(''); 
   const [location , setLocation ] = useState('');
+  const [loading , setLoading] = useState(false);
 
   useEffect(()=>{
     
@@ -46,6 +45,8 @@ const Register = () => {
     password: "",
     bio: "",
   });
+
+
   
 
   const generateRandomCode = () => {
@@ -61,8 +62,8 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const onSubmitHandler = e => {
-
+  const onSubmitHandler = async e => {
+    setLoading(true);
     e.preventDefault();
     //dispatch action
     const EmailExist = async() => {
@@ -81,40 +82,21 @@ const Register = () => {
         }
         else
         {
-          const serviceId = "service_2uoe68m" ; 
-          const templateId = "template_afw1zrm" ; 
-          const publicKey = "vGwDmMB7XybMR10h6" ; 
-          const otp = generateRandomCode() ; 
-          const templateparams = {
-              user_name : name , 
-              otp, 
-              to_email : email , 
-          }
-      
-          emailjs
-          .send(serviceId, templateId, templateparams, publicKey)
-          .then((promise) => {
-            // console.log(promise);
             formData.location = location ;  
             console.log(formData); 
             navigate('/otp-verification', {
               state: {
-                otp: otp,
                 formData: formData
               }
             });
-      
-          })
-          .catch((error) => {
-            console.log(error);
-          });
         }
       } catch (error) {
         console.log(error); 
       }
     }
 
-    EmailExist() ; 
+    await EmailExist() ; 
+    setLoading(false);
   };
 
   return (
@@ -153,7 +135,9 @@ const Register = () => {
                         <label for="terms" class="font-light text-gray-500 dark:text-gray-300">I accept the <a class="font-medium text-primary-600 hover:underline dark:text-primary-500" href="">Terms and Conditions</a></label>
                       </div>
                   </div>
-                  <button type="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create an account</button>
+                  <button type="submit" disabled={loading} class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">{loading ? <div class="flex justify-center items-center">
+  <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-white"></div>
+  </div> : 'Create an Account'}</button>
                   <p class="text-sm font-light text-gray-500 dark:text-gray-400">
                       Already have an account? <Link to="/login" class="font-medium text-primary-600 hover:text-blue-500 dark:text-blue-500">Login here</Link>
                   </p>

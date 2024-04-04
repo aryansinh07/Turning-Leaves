@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const SearchedBooks = () => {
 const location = useLocation();
-
+const [loading , setLoading] = useState(false); 
     // Extract the booksFound property from the state
 const { booksFound } = location.state;
   
@@ -27,8 +27,10 @@ const [formData , setBookName] = useState({
   };
 
   const onSubmitHandler = (e) => {
+    setLoading(true); 
     e.preventDefault() ; 
-    searchBookAction(formData); 
+    searchBookAction(formData);
+    setLoading(false);  
   }
   const userAuthString = localStorage.getItem('userAuth');
   const userAuth = userAuthString ? JSON.parse(userAuthString) : null;
@@ -77,7 +79,9 @@ const [formData , setBookName] = useState({
 <div class="mx-4 my-4 flex flex-col md:flex-row items-center justify-center">
   <form onSubmit={onSubmitHandler} class="mb-4 md:mb-0"> 
     <input onChange={onChangeInput} class="my-2 rounded-lg bg-gray-100 p-2 px-4 md:px-28 text-center font-mono w-full md:w-auto" type="text" name="bookName" placeholder="Search for Books" value={bookName} />
-    <button class="rounded-lg border-2 bg-gray-800 hover:bg-black p-2 px-6 text-sm font-medium text-white w-full md:w-auto" type='submit'>Search</button>
+    <button  disabled={loading} class="rounded-lg border-2 bg-gray-800 hover:bg-black p-2 px-6 text-sm font-medium text-white w-full md:w-auto" type='submit'>{loading ? <div class="flex justify-center items-center">
+  <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-white"></div>
+  </div>:'Search'}</button>
   </form>
 </div>
 

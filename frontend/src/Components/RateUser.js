@@ -12,6 +12,7 @@ const RateUser = () => {
   const userAuthString = localStorage.getItem('userAuth');
   const userAuth = userAuthString ? JSON.parse(userAuthString) : null;
   const userId = userAuth.userFound._id ; 
+  const [loading , setLoading ] = useState(false) ; 
 
   const [formData , setFormData] = useState({
     reviewer: userId,
@@ -30,6 +31,7 @@ const RateUser = () => {
   };
 
   const onSubmitHandler = async (e,) => {
+    setLoading(true); 
     e.preventDefault() ; 
     const config = {
         headers: {
@@ -45,6 +47,7 @@ const RateUser = () => {
     } catch (error) {
         console.log(error); 
     }
+    setLoading(false); 
   }
 
 
@@ -86,8 +89,10 @@ const RateUser = () => {
                       <textarea  onChange={onChangeInput} value={reviewText} name="reviewText" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Leave a comment..."></textarea>
                   </div>
 
-                  <button type="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                  Submit 
+                  <button type="submit" disabled={loading} class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                   {loading ? <div class="flex justify-center items-center">
+  <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-white"></div>
+  </div>:'Rate'}
                   </button>
                   
               </form>

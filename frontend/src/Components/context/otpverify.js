@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Footer from '../Footer'
 import {useContext ,  useState} from 'react'
 import { authContext } from './AuthContext/AuthContext'
 import Navbar from '../Navbar'
 import { useLocation } from 'react-router-dom';
+
+const emailjs = require("@emailjs/browser");
 
 
 const OTPverify = () => {
@@ -12,9 +14,54 @@ const OTPverify = () => {
   const [otpformData, setotpFormData] = useState({
     userOtp: 0,
   });
+  const [otp , setotp] = useState(null);  
+  const [otpSent , setOtpSent] = useState(false); 
+  const [error , setError] = useState(false); 
+  const [errorMsg , setErrorMsg] = useState(''); 
+  const [emailsendmsg , setEmailSendMsg] = useState(''); 
 
   const location = useLocation();
-  let { otp, formData } = location.state;
+  let { formData } = location.state;
+
+  const generateRandomCode = () => {
+    return Math.floor(100000 + Math.random() * 900000); // Generates a random 6-digit number
+  };
+
+  
+
+  const sendEmail = async () => {
+
+          const generatedOtp = generateRandomCode() ; 
+          setotp(generatedOtp); 
+          setOtpSent(true) ;
+          const serviceId = "service_2uoe68m" ; 
+          const templateId = "template_afw1zrm" ; 
+          const publicKey = "vGwDmMB7XybMR10h6" ; 
+          const templateparams = {
+              user_name : formData.name , 
+              otp:generatedOtp, 
+              to_email : formData.email , 
+          }
+
+          emailjs
+          .send(serviceId, templateId, templateparams, publicKey)
+          .then((promise) => {
+            console.log(promise);
+            setError(false); 
+            setEmailSendMsg('An 6 digit Otp has been send to your Email-id'); 
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+  }
+
+  const ResendEmail = async(e) =>{
+      e.preventDefault(); 
+      setOtpSent(false); 
+      await sendEmail(); 
+  }
+
+
 
   const onChangeInput = e => {
     setotpFormData({...otpformData , [e.target.name]: e.target.value });
@@ -22,24 +69,24 @@ const OTPverify = () => {
 
   const onSubmitHandler = e => {
 
-    e.preventDefault();
-    console.log(otp);
-    console.log((otpformData.userOtp)); 
+      e.preventDefault(); 
+      console.log(otp);
+      console.log((otpformData.userOtp)); 
 
-    otp = String(otp); 
-
-    if(otp === otpformData.userOtp)
+      
+    
+     
+    
+      if(otp.toString() === otpformData.userOtp)
     {
         registerUserAction(formData);
-        
     }
     else
     {
-        
-        window.alert("Oops, Wrong Otp Entered !!! "); 
-        window.location.href = "/sign-up" ; 
+        console.log('Incorrect otp')
+        setError(true); 
+        setErrorMsg('Invalid Otp Entered!!'); 
     }
-
   };
 
 
@@ -54,9 +101,13 @@ const OTPverify = () => {
         <div class="font-semibold text-3xl">
           <p>Email Verification</p>
         </div>
-        <div class="flex flex-row text-sm font-medium text-gray-400">
-          <p>We have sent a code to your email {formData.email}</p>
+        {error ? (
+          <div className="flex flex-row text-sm font-medium text-red-400">
+          <p>{errorMsg}</p>
         </div>
+        ):(<div className="flex flex-row text-sm font-medium text-green-400">
+        <p>{emailsendmsg}</p>
+      </div>)}
       </div>
 
       <div>
@@ -67,14 +118,19 @@ const OTPverify = () => {
            </div>
 
             <div class="flex flex-col space-y-5">
-              <div>
+            <div>
+                <button onClick={sendEmail} disabled={otpSent}  class="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-green-700 border-none text-white text-sm shadow-sm">
+                  Send Otp 
+                </button>
+            </div>
+            <div>
                 <button type="submit" class="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-blue-700 border-none text-white text-sm shadow-sm">
                   Verify Account
                 </button>
-              </div>
+            </div>
 
               <div class="flex flex-row items-center justify-center text-center text-sm font-medium space-x-1 text-gray-500">
-                <p>Didn't recieve code?</p> <a class="flex flex-row items-center text-blue-600" href="http://" target="_blank" rel="noopener noreferrer">Resend</a>
+                <p>Didn't recieve code?</p> <button class="flex flex-row items-center text-blue-600" href=''  onClick={ResendEmail}   rel=""> Resend</button>
               </div>
             </div>
           </div>
@@ -90,3 +146,4 @@ const OTPverify = () => {
 }
 
 export default OTPverify ; 
+
