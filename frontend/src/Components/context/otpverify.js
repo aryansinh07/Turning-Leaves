@@ -19,6 +19,7 @@ const OTPverify = () => {
   const [error , setError] = useState(false); 
   const [errorMsg , setErrorMsg] = useState(''); 
   const [emailsendmsg , setEmailSendMsg] = useState(''); 
+  const [loading , setLoading] = useState(false); 
 
   const location = useLocation();
   let { formData } = location.state;
@@ -68,7 +69,8 @@ const OTPverify = () => {
   };
 
   const onSubmitHandler = e => {
-
+      
+      setLoading(true); 
       e.preventDefault(); 
       console.log(otp);
       console.log((otpformData.userOtp)); 
@@ -87,6 +89,7 @@ const OTPverify = () => {
         setError(true); 
         setErrorMsg('Invalid Otp Entered!!'); 
     }
+    setLoading(false); 
   };
 
 
@@ -124,8 +127,10 @@ const OTPverify = () => {
                 </button>
             </div>
             <div>
-                <button type="submit" class="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-blue-700 border-none text-white text-sm shadow-sm">
-                  Verify Account
+                <button disabled={loading} type="submit" class="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-blue-700 border-none text-white text-sm shadow-sm">
+                  {loading ? <div class="flex justify-center items-center">
+  <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-white"></div>
+  </div> : 'Verify Account'}
                 </button>
             </div>
 
