@@ -6,6 +6,10 @@ import {bookContext} from './context/bookContext/bookContext'
 
 const SellBook = () => {
 
+  const userAuthString = localStorage.getItem('userAuth');
+  const userAuth = userAuthString ? JSON.parse(userAuthString) : null;
+
+  const userId = userAuth.userFound._id;
   const {createBookAction} = useContext(bookContext) ; 
 
   const [formData, setFormData] = useState({
@@ -15,6 +19,7 @@ const SellBook = () => {
     category:"",
     condition:"",
     description:"",
+    seller:userId,
   });
 
   const { title , author, price , category, condition, description } = formData;
@@ -28,6 +33,7 @@ const SellBook = () => {
     setLoading(true); 
     e.preventDefault();
     //dispatch action
+    console.log(formData); 
     createBookAction(formData);
     setLoading(false);  
   };
