@@ -22,7 +22,7 @@ const SellBook = () => {
     seller:userId,
   });
 
-  const { title , author, price , category, condition, description } = formData;
+  const { title , author, price , category, condition, description , seller} = formData;
   const [loading , setLoading] = useState(false); 
 
   const onChangeInput = e => {
