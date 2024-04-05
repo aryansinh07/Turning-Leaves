@@ -17,6 +17,7 @@ const postBookCtrl = async (req,res,next) =>{
         }); 
         console.log(bookposted); 
         const userFound = await User.findById(seller); 
+        console.log(userFound); 
         userFound.listings.push(bookposted._id); 
         await userFound.save() ; 
         return res.json({status:"success", bookposted}); 
