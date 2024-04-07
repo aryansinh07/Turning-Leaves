@@ -117,7 +117,7 @@ const userProfileCtrl = async (req,res,next) => {
 
 const fetchUsersCtrl = async(req,res,next) => {
     try {
-        const users = await User.find().populate('listings'); 
+        const users = await User.find(); 
         return res.json({
             status:"success",
             data: users
