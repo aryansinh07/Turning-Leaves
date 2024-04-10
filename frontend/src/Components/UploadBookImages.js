@@ -21,18 +21,17 @@ const UploadBookImages = () => {
     setImageFormData({ ...imageFormData, [e.target.name]: e.target.files });
   };
 
-  const onSubmitImageHandler = (e) => {
-    setLoading(true); 
+  const onSubmitImageHandler = async (e) => {
     e.preventDefault();
+    setLoading(true); // Set loading to true before form submission
     const formData = new FormData();
     for (let i = 0; i < images.length; i++) {
       formData.append('images', images[i]);
     }
-    // You can include additional data in the form data if needed
     
     // Dispatch action to upload images
-    uploadBookImageAction(formData,id);
-    setLoading(false); 
+    await uploadBookImageAction(formData,id);
+    setLoading(false); // Set loading to false after form submission
   };
 
   return (
@@ -52,9 +51,7 @@ const UploadBookImages = () => {
                   </div>
                  
                   <button disabled={loading} type="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                  {loading ? <div class="flex justify-center items-center">
-  <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-white"></div>
-  </div> : 'Upload'}
+                  {loading ? 'Uploading...' : 'Upload'}
                   </button>
                   
               </form>

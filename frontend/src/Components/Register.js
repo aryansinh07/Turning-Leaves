@@ -62,42 +62,34 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const onSubmitHandler = async e => {
+  const onSubmitHandler = async (e) => {
     setLoading(true);
     e.preventDefault();
-    //dispatch action
-    const EmailExist = async() => {
-      try {
-        
-        const config = {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        };
-        const res = await axios.get(`${API_URL_USER}/email-exist/${email}` , config); 
-        console.log(res); 
-        if(res.data.exist === true)
-        {
-          setErrorMsg('User Already Exist'); 
-        }
-        else
-        {
-            formData.location = location ;  
-            console.log(formData); 
-            navigate('/otp-verification', {
-              state: {
-                formData: formData
-              }
-            });
-        }
-      } catch (error) {
-        console.log(error); 
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const res = await axios.get(`${API_URL_USER}/email-exist/${email}`, config);
+      console.log(res);
+      if (res.data.exist === true) {
+        setErrorMsg('User Already Exist');
+      } else {
+        formData.location = location;
+        console.log(formData);
+        navigate('/otp-verification', {
+          state: {
+            formData: formData
+          }
+        });
       }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false); 
     }
-
-    await EmailExist() ; 
-    setLoading(false);
-  };
+  };  
 
   return (
     <div>

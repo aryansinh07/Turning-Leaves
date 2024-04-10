@@ -9,7 +9,7 @@ const EmailSuccess = () => {
   return (
     <div>
         <Navbar/>
-        <div class="min-h-screen flex items-center justify-center">
+        <div class="min-h-screen flex items-center justify-center mt-32">
     <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
       <div class="text-center">
         <img src="https://img.freepik.com/free-vector/business-teamwork-with-letter-computer-message_24877-54777.jpg?t=st=1710130535~exp=1710134135~hmac=b09ea1e31df54068c64daef41898105a3795d223222fc433038eb167a0dfe65b&w=740" alt="Success" class="mx-auto mb-4 md:h-48 "/>

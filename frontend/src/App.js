@@ -21,6 +21,7 @@ import PrivacyPolicy from "./Components/PrivacyPolicy";
 import FAQPAGE from "./Components/FAQPAGE";
 import WishlistSuccess from "./Components/WishlistSuccess";
 import ForgetPassword from "./Components/ForgetPassword";
+import Users from "./Components/Users";
 
 
 
@@ -52,6 +53,7 @@ function App() {
       <Route path="/faq" element={<FAQPAGE/>}/>
       <Route path="/book-added-wishlist-success" element={<WishlistSuccess/>}/>
       <Route path="/forget-password" element={<ForgetPassword/>}/>
+      <Route path="/users" element={<Users/>}/>
      </Routes>
      </BrowserRouter>
     </div>
