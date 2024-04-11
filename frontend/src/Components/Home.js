@@ -6,6 +6,13 @@ import FAQ from './FAQ'
 import krishna from "../assets/krishna.png"
 import omsingh from "../assets/omSingh.jpeg" ; 
 import aryan from "../assets/aryan.png"
+import img1 from "../assets/man with laptop.png" ; 
+import step1 from "../assets/step 1.png" ; 
+import img3 from "../assets/man in library.png" ; 
+import img2 from "../assets/step 2.png" ; 
+import seller from "../assets/as a seller.png" ; 
+import buyer from "../assets/buyer.png" ; 
+import team from "../assets/join our team.png" ; 
 
 const Home = () => {
 
@@ -91,7 +98,7 @@ const Home = () => {
     book for you !
   </div>
   <div class="h-36 md:h-48 w-48 md:w-60 mb-4 md:mb-0">
-    <img src="https://img.freepik.com/free-vector/telecommuting-illustration_23-2148485189.jpg?w=740&t=st=1701956903~exp=1701957503~hmac=fc09d9f45628fdd63d74cf9c39d59dba674c013e64a4792b6613c22038de00d2" class="object-contain h-full w-full" />
+    <img src={img1} class="object-contain h-full w-full" />
   </div>
 </div>
 
@@ -153,21 +160,21 @@ const Home = () => {
 <div class="mx-16 my-4 font-bold tracking-normal">How it Works</div>
 <hr class="mx-16" />
 
-<div class="guide mx-4 flex flex-col md:flex-row">
+<div class="guide mx-16 flex flex-col md:flex-row">
   <div class="flex flex-col border-b md:border-r mb-4 md:mb-0">
-        <img class="h-52 w-80" src="https://img.freepik.com/free-vector/girl-picking-book_53876-16966.jpg?w=740&t=st=1701958324~exp=1701958924~hmac=f29ac74da1eade84f9e4d81b269c224815ffaa72fa4a48a903306e51e0de7e19" />
+        <img class="h-52 w-80" src={step1} />
         <span class="mx-2 font-semibold"> Step1 </span>
         <p class="mx-2 mb-8 mt-2 text-lg font-normal">Enter your search criteria. Type in the book title, author, or ISBN to find the books you're looking for.</p>
   </div>
 
   <div class="flex flex-col border-b md:border-r mb-4 md:mb-0">
-        <img class="h-52 w-80" src="https://img.freepik.com/free-vector/young-man-with-laptop-relaxing-sofa-home_74855-5606.jpg?w=996&t=st=1705327016~exp=1705327616~hmac=912d948eec89128f8d3680527049a3df77896be4ec2fbe0cc1d945d1b78395d7" />
+        <img class="h-52 w-80" src={img2} />
         <span class="mx-2 font-semibold"> Step2 </span>
         <p class="mx-2 mb-8 mt-2 text-lg font-normal">Browse and select your desired book. You're one step closer to finding the perfect read.</p>
   </div>
 
   <div class="flex flex-col border-b md:border-r mb-4 md:mb-0">
-        <img class="h-52 w-80" src="https://img.freepik.com/free-vector/man-library-scene-young-guy-sitting-table-with-books-lamp-studying-working-reading-modern-room-interior-design-with-desk-chairs-bookcase-with-ladder_575670-1119.jpg?w=740&t=st=1705327286~exp=1705327886~hmac=93d01ec23cae38baf57e53e5a70e378a093d66b0643c6f6a79de68d2767d2c10" />
+        <img class="h-52 w-80" src={img3} />
         <span class="mx-2 font-semibold"> Step3 </span>
         <p class="mx-2 mb-8 mt-2 text-lg">Complete your purchase by contacting and collaborating with the seller !</p>
   </div>
@@ -179,7 +186,7 @@ const Home = () => {
 <hr class="mx-16 mb-4" />
 
 <div class="mx-4 flex flex-col md:flex-row justify-around items-center mb-4">
-  <img class="h-60 md:h-80 w-full md:w-80 mb-4 md:mb-0" src="https://img.freepik.com/free-vector/men-going-food-shopping_74855-1362.jpg?w=740&t=st=1701963016~exp=1701963616~hmac=b92c8921f5602d656e0ac796c9a14e375debee07865d625c7375e347b3383916" alt="" />
+  <img class="h-60 md:h-80 w-full md:w-80 mb-4 md:mb-0" src={seller} alt="" />
   <div class="flex flex-col justify-around">
         <span class="text-2xl font-semibold"> As a Seller </span>
         <p class="w-60 text-lg">Earn money by selling your used books. All you need is a book and an account with us.</p>
@@ -190,7 +197,7 @@ const Home = () => {
 <hr class="mx-16 my-4" />
 
 <div class="mx-4 flex flex-col md:flex-row justify-around items-center mb-4">
-  <img class="h-60 md:h-80 w-full md:w-80 mb-4 md:mb-0" src="https://img.freepik.com/free-vector/student-boy-with-reading-book-hands_25030-39022.jpg?w=740&t=st=1701962860~exp=1701963460~hmac=863bd428ac34d23c7f9ab1e1693c0ba2e44488b6297717de399402a5399912b9" alt="" />
+  <img class="h-60 md:h-80 w-full md:w-80 mb-4 md:mb-0" src={buyer} alt="" />
   <div class="flex flex-col justify-around">
         <span class="text-2xl font-semibold"> As a Buyer </span>
         <p class="w-60 text-lg">Online Book Thrift Store offers a wide selection of used books, with detailed information and secure checkout.</p>
@@ -201,7 +208,7 @@ const Home = () => {
 <hr class="mx-16 my-4" />
 
 <div class="mx-4 flex flex-col md:flex-row justify-around items-center mb-4">
-  <img class="h-60 md:h-80 w-full md:w-80 mb-4 md:mb-0" src="https://img.freepik.com/free-vector/happy-friend-sitting-talking-each-other-laptop_1308-97730.jpg?w=740&t=st=1701962964~exp=1701963564~hmac=d80109e0edbd4a4788ac3d418dfc4b1ecfc205b3d9f551b3882040c83aa62502" alt="" />
+  <img class="h-60 md:h-80 w-full md:w-80 mb-4 md:mb-0" src={team} alt="" />
   <div class="flex flex-col justify-around">
         <span class="text-2xl font-semibold"> Join our team </span>
         <p class="w-60 text-lg">Be part of a community that's passionate about books and connecting readers.</p>

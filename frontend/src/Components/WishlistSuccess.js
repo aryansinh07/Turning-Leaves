@@ -2,6 +2,7 @@ import React from 'react'
 import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import img from "../assets/wishlist success.png"
 
 const WishlistSuccess = () => {
 
@@ -14,7 +15,7 @@ const WishlistSuccess = () => {
         <div class="min-h-screen flex items-center justify-center">
   <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
     <div class="text-center">
-      <img src="https://img.freepik.com/free-vector/flat-young-smiley-businessman-near-folder-with-task-list-holding-pencil_126523-2893.jpg?w=740&t=st=1711630750~exp=1711631350~hmac=76d19411f569624823d2fbbc744ca65531e47049fabd52ab10ef32aec8fb498c" alt="Success" class="mx-auto mb-4 md:h-48"/>
+      <img src={img} alt="Success" class="mx-auto mb-4 md:h-48"/>
       <svg class="mx-auto mb-4 w-16 h-16 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>

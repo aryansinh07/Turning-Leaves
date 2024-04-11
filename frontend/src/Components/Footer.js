@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from "../assets/Turning leaves logo.png" ; 
 
 const Footer = () => {
   return (
     <footer className="bg-white rounded-lg shadow dark:bg-gray-900 md:my-4 my-4">
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
-          <a href="https://flowbite.com/" className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-            <img className='h-16' src='https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books_23-2149331952.jpg?t=st=1709533812~exp=1709537412~hmac=61a47b119b8e04fd264c23e66a4ca55cca23c6b42647035db5fd8b43ba8f41cd&w=996' alt="Turning Leaves Logo" />
+          <a href="" className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+            <img className='h-16' src={logo} alt="Turning Leaves Logo" />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"> Turning Leaves </span>
           </a>
           <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
